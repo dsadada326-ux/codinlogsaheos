@@ -7,6 +7,7 @@ Roblox game scripts, synced into Roblox Studio with [Rojo](https://rojo.space).
 | Folder | Goes into Studio at |
 | --- | --- |
 | `src/ServerScriptService` | ServerScriptService |
+| `src/ReplicatedFirst` | ReplicatedFirst |
 | `src/ReplicatedStorage` | ReplicatedStorage |
 | `src/StarterGui` | StarterGui |
 | `src/StarterPlayerScripts` | StarterPlayer.StarterPlayerScripts |

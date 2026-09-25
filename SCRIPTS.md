@@ -6,6 +6,15 @@ Use this when exporting scripts out of Studio.
 **Do not create empty placeholder files.** Rojo overwrites a Studio script with
 whatever its file contains, so an empty file would wipe the real script.
 
+## ReplicatedFirst (LocalScripts)
+
+| Studio | File |
+| --- | --- |
+| LoadingScreen | `src/ReplicatedFirst/LoadingScreen.client.luau` |
+
+The `Loading` ScreenGui should also sit in ReplicatedFirst (Studio only, not
+synced) so the loading screen can show before anything else loads.
+
 ## ReplicatedStorage (ModuleScripts)
 
 | Studio | File |
@@ -58,6 +67,7 @@ Rojo leaves these alone:
 
 - `ReplicatedStorage.Remotes` (RemoteEvents and RemoteFunctions)
 - `ReplicatedStorage.TimeButtonVfx`
+- `ReplicatedFirst.Loading` (the loading screen ScreenGui)
 - The ScreenGuis in StarterGui (CameraMode, CashGain, ClickRewards, Currencies,
   Buttons, Settings). Any scripts inside them aren't synced yet.
 - Everything in Workspace (islands, boards, upgrade tree, zones)
