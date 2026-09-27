@@ -49,7 +49,7 @@ A Script with a ModuleScript inside it becomes a folder: the Script is
 All go in `src/StarterPlayerScripts/` as `<Name>.client.luau`:
 
 ButtonManager, ButtonVFXManager, ChatHints, ClickCursors, ConversionBoard,
-MusicSetting, RebirthBoard, RebirthBoostsBoard, SettingsUI, TempZones,
+MusicSetting, ProfileCharacter, RebirthBoard, RebirthBoostsBoard, SettingsUI, TempZones,
 TimeButtonFX, TimeGemsBoards, UIClickSound, UpgradeBoard, ZoneReveal
 
 ## Stays in Studio only
