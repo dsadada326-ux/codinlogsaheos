@@ -1,0 +1,437 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4"><Item class="LocalScript" referent="RBX0C95A8BFCBE64FF0A7CC3BE38FB0B155">
+				<Properties>
+					<ProtectedString name="Source">local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+local SoundService = game:GetService("SoundService")
+local TweenService = game:GetService("TweenService")
+
+local buttonModel = workspace
+	:WaitForChild("Islands")
+	:WaitForChild("Island1")
+	:WaitForChild("RedButton")
+	:WaitForChild("Button")
+
+local clickPart = buttonModel:WaitForChild("ClickPart")
+local clickDetector = clickPart:WaitForChild("ClickDetector")
+
+local highlight = buttonModel
+	:WaitForChild("Base")
+	:FindFirstChild("Highlight")
+
+local comboLayout = buttonModel
+	:WaitForChild("Counter")
+	:WaitForChild("SurfaceGui")
+	:WaitForChild("Frame")
+	:WaitForChild("ComboLayout")
+
+-- always visible
+local countText = comboLayout:WaitForChild("TextLabel")
+local countShadow = comboLayout:WaitForChild("DropShadow")
+
+-- only visible while clicking
+local comboExtras = comboLayout:WaitForChild("ComboExtras")
+local tierText = comboExtras:WaitForChild("ComboTier")
+local multiplierText = comboExtras:WaitForChild("ComboMultiplier")
+local comboFill = comboExtras
+	:WaitForChild("ComboBar")
+	:WaitForChild("Fill")
+local comboFire = comboExtras:WaitForChild("ComboFire")
+local fireScale = comboFire:WaitForChild("FireScale")
+
+local localButtonPressVFX =
+	ReplicatedStorage:FindFirstChild("LocalButtonPressVFX")
+
+if not localButtonPressVFX then
+	localButtonPressVFX = Instance.new("BindableEvent")
+	localButtonPressVFX.Name = "LocalButtonPressVFX"
+	localButtonPressVFX.Parent = ReplicatedStorage
+end
+
+local validClickSound = Instance.new("Sound")
+validClickSound.Name = "ButtonValidClickSound"
+validClickSound.SoundId = "rbxassetid://9090993751"
+validClickSound.Volume = 1
+validClickSound.Parent = SoundService
+
+local CLICK_COOLDOWN = 0.1
+
+-- combo settings
+-- shared with the server (ReplicatedStorage.ComboConfig)
+local ComboConfig = require(ReplicatedStorage:WaitForChild("ComboConfig"))
+local SettingsConfig = require(ReplicatedStorage:WaitForChild("SettingsConfig"))
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local function settingOn(key)
+	local value = player:GetAttribute(SettingsConfig.attributeOf(key))
+
+	if value == nil then
+		return SettingsConfig.Settings[key].Default
+	end
+
+	return value
+end
+local MAX_MULTIPLIER = ComboConfig.MaxMultiplier
+local TIME_TO_MAX = ComboConfig.TimeToMax
+local COMBO_TIMEOUT = ComboConfig.ComboTimeout
+local FILL_SPEED = 12       -- how fast the bar chases its target
+local DRAIN_SPEED = 3       -- how fast the bar empties after the combo ends
+local FADE_IN_TIME = 0.12   -- combo extras fade in
+local FADE_OUT_TIME = 0.35  -- combo extras fade out
+
+-- fire settings
+local FIRE_MIN_SCALE = 0.8   -- fire size at the start of a combo
+local FIRE_MAX_SCALE = 1.15  -- fire size at a full bar
+local FIRE_CLICK_POP = 0.12  -- extra size on every click
+local FIRE_TIER_POP = 0.3    -- extra size when the tier word changes
+local FIRE_MAX_POP = 0.35    -- extra size when the bar first fills up
+local FIRE_WOBBLE_DEGREES = 6
+local FIRE_WOBBLE_TIME = 0.35
+
+-- counter layout while comboing = however it is set up in Studio
+local comboCountLayout = {
+	Position = countText.Position,
+	Size = countText.Size,
+}
+
+local comboShadowLayout = {
+	Position = countShadow.Position,
+	Size = countShadow.Size,
+}
+
+-- counter layout when idle: centered and a bit bigger
+local idleCountLayout = {
+	Position = UDim2.fromScale(0.5, 0.5),
+	Size = UDim2.fromScale(0.8, 0.82),
+}
+
+local idleShadowLayout = {
+	Position = UDim2.fromScale(0.5, 0.545),
+	Size = UDim2.fromScale(0.8, 0.82),
+}
+
+-- words shown above the count, by combo size
+local TIERS = {
+	{ min = 0, text = "COMBO", color = Color3.fromRGB(180, 180, 180) },
+	{ min = 1, text = "COMBO", color = Color3.fromRGB(255, 255, 255) },
+	{ min = 10, text = "NICE!", color = Color3.fromRGB(140, 255, 140) },
+	{ min = 25, text = "GREAT!", color = Color3.fromRGB(255, 235, 90) },
+	{ min = 50, text = "AMAZING!", color = Color3.fromRGB(255, 170, 60) },
+	{ min = 100, text = "INCREDIBLE!", color = Color3.fromRGB(255, 100, 100) },
+	{ min = 200, text = "UNSTOPPABLE!", color = Color3.fromRGB(255, 90, 220) },
+}
+
+local WHITE = Color3.fromRGB(255, 255, 255)
+local GOLD = Color3.fromRGB(255, 215, 60)
+
+local canClick = true
+
+local comboCount = 0
+local comboStart = nil
+local lastClick = 0
+local shownProgress = 0
+local extrasShown = false
+local lastTier = nil
+local maxReached = false
+local fireWobble = nil
+
+local function getTier(count)
+	local result = TIERS[1]
+
+	for _, tier in ipairs(TIERS) do
+		if count &gt;= tier.min then
+			result = tier
+		end
+	end
+
+	return result
+end
+
+-- returns true if the tier word changed
+local function refreshCounter()
+	local text = "x" .. comboCount
+	countText.Text = text
+	countShadow.Text = text
+
+	local tier = getTier(comboCount)
+	tierText.Text = tier.text
+	tierText.TextColor3 = tier.color
+
+	local changed = tier ~= lastTier
+	lastTier = tier
+
+	return changed
+end
+
+-- fire helpers
+local function fireTargetScale()
+	return FIRE_MIN_SCALE
+		+ (FIRE_MAX_SCALE - FIRE_MIN_SCALE) * shownProgress
+end
+
+local function tweenFireScale(scale, time, style, direction)
+	TweenService:Create(
+		fireScale,
+		TweenInfo.new(time, style, direction),
+		{ Scale = scale }
+	):Play()
+end
+
+-- quick grow then settle back to the current size
+local function popFire(extra)
+	if not settingOn("VFX") then
+		return
+	end
+
+	local target = fireTargetScale()
+
+	fireScale.Scale = target + extra
+
+	tweenFireScale(
+		target,
+		0.2,
+		Enum.EasingStyle.Back,
+		Enum.EasingDirection.Out
+	)
+end
+
+local function startFireWobble()
+	if fireWobble or not settingOn("VFX") then
+		return
+	end
+
+	comboFire.Rotation = -FIRE_WOBBLE_DEGREES
+
+	fireWobble = TweenService:Create(
+		comboFire,
+		TweenInfo.new(
+			FIRE_WOBBLE_TIME,
+			Enum.EasingStyle.Sine,
+			Enum.EasingDirection.InOut,
+			-1,
+			true
+		),
+		{ Rotation = FIRE_WOBBLE_DEGREES }
+	)
+
+	fireWobble:Play()
+end
+
+local function stopFireWobble()
+	if fireWobble then
+		fireWobble:Cancel()
+		fireWobble = nil
+	end
+
+	comboFire.Rotation = 0
+end
+
+-- fades the combo extras in/out and moves the count between its two layouts
+local function setExtrasShown(shown)
+	if extrasShown == shown then
+		return
+	end
+
+	extrasShown = shown
+
+	local tweenInfo = TweenInfo.new(
+		shown and FADE_IN_TIME or FADE_OUT_TIME,
+		Enum.EasingStyle.Quad,
+		Enum.EasingDirection.Out
+	)
+
+	TweenService:Create(comboExtras, tweenInfo, {
+		GroupTransparency = shown and 0 or 1,
+	}):Play()
+
+	TweenService:Create(
+		countText,
+		tweenInfo,
+		shown and comboCountLayout or idleCountLayout
+	):Play()
+
+	TweenService:Create(
+		countShadow,
+		tweenInfo,
+		shown and comboShadowLayout or idleShadowLayout
+	):Play()
+
+	if shown then
+		-- fire pops in
+		fireScale.Scale = 0
+
+		tweenFireScale(
+			fireTargetScale(),
+			0.35,
+			Enum.EasingStyle.Back,
+			Enum.EasingDirection.Out
+		)
+
+		startFireWobble()
+	else
+		-- fire shrinks away
+		tweenFireScale(
+			0,
+			0.3,
+			Enum.EasingStyle.Quad,
+			Enum.EasingDirection.In
+		)
+
+		stopFireWobble()
+	end
+end
+
+local function endCombo()
+	comboStart = nil
+	comboCount = 0
+	maxReached = false
+	refreshCounter()
+end
+
+local function setNormalHighlight()
+	if not highlight then
+		return
+	end
+
+	highlight.Enabled = true
+	highlight.FillColor = Color3.fromRGB(90, 255, 90)
+end
+
+clickDetector.MouseHoverEnter:Connect(function()
+	if highlight then
+		highlight.Enabled = true
+		highlight.FillColor = Color3.fromRGB(255, 255, 90)
+	end
+end)
+
+clickDetector.MouseHoverLeave:Connect(function()
+	setNormalHighlight()
+end)
+
+clickDetector.MouseClick:Connect(function()
+	if not canClick then
+		return
+	end
+
+	canClick = false
+
+	local now = os.clock()
+
+	if comboStart and now - lastClick &gt; COMBO_TIMEOUT then
+		endCombo()
+	end
+
+	if not comboStart then
+		comboStart = now
+	end
+
+	comboCount += 1
+	lastClick = now
+
+	local tierChanged = refreshCounter()
+	local wasShown = extrasShown
+
+	setExtrasShown(true)
+
+	-- the pop-in already animates the fire on the first click
+	if wasShown then
+		popFire(tierChanged and FIRE_TIER_POP or FIRE_CLICK_POP)
+	end
+
+	if settingOn("SFX") then
+		validClickSound:Stop()
+		validClickSound.TimePosition = 0
+		validClickSound:Play()
+	end
+
+	localButtonPressVFX:Fire()
+
+	task.wait(CLICK_COOLDOWN)
+	canClick = true
+end)
+
+RunService.RenderStepped:Connect(function(deltaTime)
+	local now = os.clock()
+
+	if comboStart and now - lastClick &gt; COMBO_TIMEOUT then
+		endCombo()
+	end
+
+	local target = 0
+
+	if comboStart then
+		target = math.clamp(
+			(now - comboStart) / TIME_TO_MAX,
+			0,
+			1
+		)
+	end
+
+	local speed = target &gt;= shownProgress
+		and FILL_SPEED
+		or DRAIN_SPEED
+
+	shownProgress += (target - shownProgress)
+		* (1 - math.exp(-speed * deltaTime))
+
+	if math.abs(target - shownProgress) &lt; 0.002 then
+		shownProgress = target
+	end
+
+	-- big pop the first time the bar fills up
+	if comboStart and shownProgress &gt;= 1 and not maxReached then
+		maxReached = true
+		popFire(FIRE_MAX_POP)
+	end
+
+	-- combo over and bar empty: back to just the count
+	if not comboStart and shownProgress &lt;= 0 then
+		setExtrasShown(false)
+	end
+
+	comboFill.Size = UDim2.fromScale(1, shownProgress)
+	comboFill.BackgroundColor3 =
+		Color3.fromHSV(0.33 - 0.25 * shownProgress, 0.85, 1)
+
+	local multiplier =
+		1 + (MAX_MULTIPLIER - 1) * shownProgress
+
+	local multiplierString = string.format("%.2fx", multiplier)
+
+	if multiplierText.Text ~= multiplierString then
+		multiplierText.Text = multiplierString
+	end
+
+	multiplierText.TextColor3 =
+		shownProgress &gt;= 1 and GOLD or WHITE
+end)
+
+-- start idle: extras hidden, fire shrunk, count centered
+comboExtras.GroupTransparency = 1
+fireScale.Scale = 0
+comboFire.Rotation = 0
+countText.Position = idleCountLayout.Position
+countText.Size = idleCountLayout.Size
+countShadow.Position = idleShadowLayout.Position
+countShadow.Size = idleShadowLayout.Size
+
+setNormalHighlight()
+refreshCounter()
+</ProtectedString>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null /></Content>
+					<token name="RunContext">0</token>
+					<string name="ScriptGuid">{52B7B941-ABED-4CEB-86BF-BACE8F8F14AC}</string>
+					<BinaryString name="AttributesSerialize">AQAAABEAAABfbGVtb25hZGVVbmlxdWVJZAIMAAAAUmJkVDhSRXNSYmRU</BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">ButtonManager</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">4586da86f6470bd40ac60535000057ac</UniqueId>
+				</Properties>
+			</Item>
+			<SharedStrings><SharedString md5="yuZpQdnvvUBOTYh1jqZ2cA==" />
+		</SharedStrings></roblox>

@@ -1,0 +1,560 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4"><Item class="ScreenGui" referent="RBX06F18C5352B848BC8DD14820D5E86BD7">
+			<Properties>
+				<bool name="ClipToDeviceSafeArea">true</bool>
+				<int name="DisplayOrder">60</int>
+				<token name="SafeAreaCompatibility">1</token>
+				<token name="ScreenInsets">2</token>
+				<bool name="Enabled">true</bool>
+				<bool name="ResetOnSpawn">false</bool>
+				<token name="ZIndexBehavior">1</token>
+				<bool name="AutoLocalize">true</bool>
+				<Ref name="RootLocalizationTable">null</Ref>
+				<token name="SelectionBehaviorDown">0</token>
+				<token name="SelectionBehaviorLeft">0</token>
+				<token name="SelectionBehaviorRight">0</token>
+				<token name="SelectionBehaviorUp">0</token>
+				<bool name="SelectionGroup">false</bool>
+				<BinaryString name="AttributesSerialize" />
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">OwnerPanel</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">40e32b73abd9ad5f0ac9bc4d0003538c</UniqueId>
+			</Properties>
+			<Item class="LocalScript" referent="RBXC5B7A0F728E848339FB3B68C9FC4B4C4">
+				<Properties>
+					<ProtectedString name="Source">-- Owner Panel (client). Only owners ever get this ScreenGui (OwnerPanelService gives it out), and
+-- the server re-checks every change. Lists only the currency values (tracking every attribute
+-- live caused lag) -- use the custom row at the bottom to set anything else:
+--   numbers  -&gt; type an amount at the top (1T, 250K, 5e15...), then Set or Add on any row
+--   on/off   -&gt; click to flip it
+-- "Give All Currencies" sets every currency to the amount. Use the custom row for anything else.
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TweenService = game:GetService("TweenService")
+
+local player = Players.LocalPlayer
+local NumberFormat = require(ReplicatedStorage:WaitForChild("NumberFormat"))
+local remote = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("OwnerSetValue")
+
+local gui = script.Parent
+
+-- shown first, in this order
+local CURRENCIES = {
+	"Cash", "Buttons", "ButtonValue", "Rebirths", "Time", "Gems", "Coins", "Prestige", "Stars",
+	"Wood", "Gold", "Ores", "Iron", "Wheat",
+	"FishMeal", "Shells", "Crabs", "FishCaught", "FishTier", "FishPrestige",
+}
+local HIDDEN = { DataLoaded = true }
+
+local FONT = Font.fromEnum(Enum.Font.FredokaOne)
+local C = {
+	panel = Color3.fromRGB(26, 26, 38),
+	row = Color3.fromRGB(38, 38, 54),
+	rowAlt = Color3.fromRGB(33, 33, 47),
+	box = Color3.fromRGB(16, 16, 24),
+	gold1 = Color3.fromRGB(255, 214, 70),
+	gold2 = Color3.fromRGB(245, 150, 25),
+	green = Color3.fromRGB(80, 220, 90),
+	blue = Color3.fromRGB(70, 160, 255),
+	red = Color3.fromRGB(235, 70, 70),
+	grey = Color3.fromRGB(110, 110, 125),
+	text = Color3.new(1, 1, 1),
+	dim = Color3.fromRGB(170, 170, 190),
+}
+
+------------------------------------------------------------------------------------------
+-- little UI helpers
+------------------------------------------------------------------------------------------
+local function corner(parent, r)
+	local c = Instance.new("UICorner")
+	c.CornerRadius = UDim.new(0, r or 10)
+	c.Parent = parent
+end
+
+local function stroke(parent, thickness, color)
+	local s = Instance.new("UIStroke")
+	s.Thickness = thickness or 2
+	s.Color = color or Color3.new(0, 0, 0)
+	s.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	s.Parent = parent
+	return s
+end
+
+local function textStroke(label, thickness)
+	local s = Instance.new("UIStroke")
+	s.Thickness = thickness or 1.5
+	s.Color = Color3.fromRGB(10, 10, 16)
+	s.Parent = label
+end
+
+local function label(parent, text, size, pos, props)
+	local l = Instance.new("TextLabel")
+	l.BackgroundTransparency = 1
+	l.Size = size
+	l.Position = pos or UDim2.new()
+	l.FontFace = FONT
+	l.Text = text
+	l.TextColor3 = C.text
+	l.TextScaled = true
+	l.TextXAlignment = Enum.TextXAlignment.Left
+	for k, v in pairs(props or {}) do
+		if k ~= "MaxText" then l[k] = v end
+	end
+	l.Parent = parent
+	local limit = Instance.new("UITextSizeConstraint")
+	limit.MaxTextSize = (props and props.MaxText) or 22
+	limit.Parent = l
+	return l
+end
+
+local function button(parent, text, color, size, pos)
+	local b = Instance.new("TextButton")
+	b.AutoButtonColor = true
+	b.BackgroundColor3 = color
+	b.Size = size
+	b.Position = pos or UDim2.new()
+	b.FontFace = FONT
+	b.Text = text
+	b.TextColor3 = C.text
+	b.TextScaled = true
+	corner(b, 8)
+	stroke(b, 2)
+	textStroke(b, 1.5)
+	local pad = Instance.new("UIPadding")
+	pad.PaddingTop = UDim.new(0.18, 0)
+	pad.PaddingBottom = UDim.new(0.18, 0)
+	pad.PaddingLeft = UDim.new(0, 6)
+	pad.PaddingRight = UDim.new(0, 6)
+	pad.Parent = b
+	local grad = Instance.new("UIGradient")
+	grad.Rotation = 90
+	grad.Color = ColorSequence.new(Color3.new(1, 1, 1), Color3.fromRGB(190, 190, 190))
+	grad.Parent = b
+	b.Parent = parent
+	return b
+end
+
+local function textBox(parent, placeholder, size, pos)
+	local t = Instance.new("TextBox")
+	t.BackgroundColor3 = C.box
+	t.Size = size
+	t.Position = pos or UDim2.new()
+	t.FontFace = FONT
+	t.PlaceholderText = placeholder
+	t.PlaceholderColor3 = C.grey
+	t.Text = ""
+	t.TextColor3 = C.text
+	t.TextScaled = true
+	t.ClearTextOnFocus = false
+	t.TextXAlignment = Enum.TextXAlignment.Left
+	corner(t, 8)
+	stroke(t, 2, Color3.fromRGB(70, 70, 95))
+	local pad = Instance.new("UIPadding")
+	pad.PaddingLeft = UDim.new(0, 10)
+	pad.PaddingRight = UDim.new(0, 10)
+	pad.PaddingTop = UDim.new(0.2, 0)
+	pad.PaddingBottom = UDim.new(0.2, 0)
+	pad.Parent = t
+	t.Parent = parent
+	return t
+end
+
+------------------------------------------------------------------------------------------
+-- amounts: "1T", "2.5qa", "5e15", "1,000,000"
+------------------------------------------------------------------------------------------
+local SUFFIX = {
+	k = 1e3, m = 1e6, b = 1e9, t = 1e12, qa = 1e15, qi = 1e18, sx = 1e21, sp = 1e24,
+	oc = 1e27, no = 1e30, dc = 1e33,
+}
+
+local function parseAmount(text)
+	text = (text or ""):gsub("[,%s]", ""):lower()
+	if text == "" then return nil end
+
+	local direct = tonumber(text)
+	if direct then return direct end
+
+	local num, suffix = text:match("^(%-?[%d%.]+)(%a+)$")
+	local n = tonumber(num or "")
+	local mult = suffix and SUFFIX[suffix]
+
+	if n and mult then
+		return n * mult
+	end
+
+	return nil
+end
+
+------------------------------------------------------------------------------------------
+-- layout
+------------------------------------------------------------------------------------------
+local toggle = button(gui, "OWNER", C.gold2, UDim2.fromOffset(112, 40), UDim2.new(0, 58, 0.67, 0))
+toggle.Name = "Toggle"
+
+local panel = Instance.new("Frame")
+panel.Name = "Panel"
+panel.AnchorPoint = Vector2.new(0.5, 0.5)
+panel.Position = UDim2.fromScale(0.5, 0.5)
+panel.Size = UDim2.fromScale(0.46, 0.74)
+panel.BackgroundColor3 = C.panel
+panel.Visible = false
+panel.Parent = gui
+corner(panel, 16)
+stroke(panel, 3)
+
+local minSize = Instance.new("UISizeConstraint")
+minSize.MinSize = Vector2.new(440, 420)
+minSize.Parent = panel
+
+local openScale = Instance.new("UIScale")
+openScale.Parent = panel
+
+local pad = Instance.new("UIPadding")
+pad.PaddingLeft = UDim.new(0, 14)
+pad.PaddingRight = UDim.new(0, 14)
+pad.PaddingTop = UDim.new(0, 12)
+pad.PaddingBottom = UDim.new(0, 12)
+pad.Parent = panel
+
+-- header
+local header = Instance.new("Frame")
+header.Size = UDim2.new(1, 0, 0, 44)
+header.BackgroundColor3 = C.gold1
+header.Parent = panel
+corner(header, 10)
+stroke(header, 2)
+local hg = Instance.new("UIGradient")
+hg.Rotation = 90
+hg.Color = ColorSequence.new(C.gold1, C.gold2)
+hg.Parent = header
+
+local title = label(header, "Owner Panel", UDim2.new(0.7, 0, 0.7, 0), UDim2.new(0, 12, 0.15, 0), { MaxText = 30 })
+textStroke(title, 2.5)
+
+local close = button(header, "X", C.red, UDim2.new(0, 36, 0, 32), UDim2.new(1, -42, 0, 6))
+
+-- amount row
+local amountBox = textBox(panel, "Amount (1T, 250K, 5e15...)", UDim2.new(0.44, 0, 0, 38), UDim2.new(0, 0, 0, 54))
+
+local chips = { { "1M", "1M" }, { "1B", "1B" }, { "1T", "1T" }, { "1Qa", "1qa" } }
+for i, chip in ipairs(chips) do
+	local b = button(panel, chip[1], C.blue, UDim2.new(0.13, -4, 0, 38), UDim2.new(0.46 + (i - 1) * 0.135, 0, 0, 54))
+	b.Activated:Connect(function()
+		amountBox.Text = chip[2]
+	end)
+end
+
+-- search
+local search = textBox(panel, "Search values...", UDim2.new(1, 0, 0, 32), UDim2.new(0, 0, 0, 100))
+
+-- list
+local list = Instance.new("ScrollingFrame")
+list.Name = "List"
+list.BackgroundColor3 = C.box
+list.BackgroundTransparency = 0.3
+list.Position = UDim2.new(0, 0, 0, 140)
+list.Size = UDim2.new(1, 0, 1, -140 - 96)
+list.CanvasSize = UDim2.new()
+list.AutomaticCanvasSize = Enum.AutomaticSize.Y
+list.ScrollBarThickness = 6
+list.ScrollBarImageColor3 = C.gold1
+list.BorderSizePixel = 0
+list.Parent = panel
+corner(list, 10)
+
+local listLayout = Instance.new("UIListLayout")
+listLayout.SortOrder = Enum.SortOrder.LayoutOrder
+listLayout.Padding = UDim.new(0, 4)
+listLayout.Parent = list
+
+local listPad = Instance.new("UIPadding")
+listPad.PaddingLeft = UDim.new(0, 6)
+listPad.PaddingRight = UDim.new(0, 12)
+listPad.PaddingTop = UDim.new(0, 6)
+listPad.PaddingBottom = UDim.new(0, 6)
+listPad.Parent = list
+
+-- footer
+local giveAll = button(panel, "Give All Currencies", C.green, UDim2.new(1, 0, 0, 38), UDim2.new(0, 0, 1, -86))
+
+local customName = textBox(panel, "Any value name (e.g. Upgrade_CashMultiplier)", UDim2.new(0.5, -4, 0, 38), UDim2.new(0, 0, 1, -40))
+local customValue = textBox(panel, "Value / true / false", UDim2.new(0.3, -4, 0, 38), UDim2.new(0.5, 0, 1, -40))
+local customSet = button(panel, "Set", C.gold2, UDim2.new(0.2, 0, 0, 38), UDim2.new(0.8, 0, 1, -40))
+
+-- status toast
+local status = label(gui, "", UDim2.fromOffset(520, 34), UDim2.new(0.5, -260, 0.1, 0), {
+	TextXAlignment = Enum.TextXAlignment.Center, MaxText = 28, TextTransparency = 1, Visible = true,
+})
+textStroke(status, 2)
+
+local toastId = 0
+local function toast(text, good)
+	toastId += 1
+	local mine = toastId
+	status.Text = text
+	status.TextColor3 = good and C.green or C.red
+	status.TextTransparency = 0
+	task.delay(2.2, function()
+		if toastId == mine then
+			TweenService:Create(status, TweenInfo.new(0.4), { TextTransparency = 1 }):Play()
+		end
+	end)
+end
+
+------------------------------------------------------------------------------------------
+-- talking to the server
+------------------------------------------------------------------------------------------
+local function send(attribute, mode, value)
+	local ok, result = pcall(function()
+		return remote:InvokeServer(attribute, mode, value)
+	end)
+
+	if ok and type(result) == "table" and result.ok then
+		local shown = type(result.value) == "number" and NumberFormat.abbreviate(result.value) or tostring(result.value)
+		toast(attribute .. " = " .. shown, true)
+		return true
+	end
+
+	toast((ok and type(result) == "table" and result.message) or "Failed", false)
+	return false
+end
+
+local function amountOrWarn()
+	local n = parseAmount(amountBox.Text)
+	if not n then
+		toast("Type an amount first (like 1T)", false)
+	end
+	return n
+end
+
+------------------------------------------------------------------------------------------
+-- rows (one per saved value, kept live)
+------------------------------------------------------------------------------------------
+local rows = {} -- [attribute] = { frame, value, kind }
+local currencyIndex = {}
+for i, name in ipairs(CURRENCIES) do currencyIndex[name] = i end
+
+local function orderOf(name)
+	return currencyIndex[name] or 1000
+end
+
+local function formatValue(v)
+	if type(v) == "number" then
+		return NumberFormat.abbreviate(v)
+	end
+	return v and "ON" or "OFF"
+end
+
+local function paintBool(b, v)
+	b.Text = v and "ON" or "OFF"
+	b.BackgroundColor3 = v and C.green or C.grey
+end
+
+local function makeRow(name, v)
+	local kind = type(v)
+	local frame = Instance.new("Frame")
+	frame.Name = name
+	frame.Size = UDim2.new(1, 0, 0, 34)
+	frame.BackgroundColor3 = currencyIndex[name] and C.row or C.rowAlt
+	frame.Parent = list
+	corner(frame, 8)
+
+	label(frame, name, UDim2.new(0.44, -10, 0.7, 0), UDim2.new(0, 10, 0.15, 0), {
+		TextColor3 = currencyIndex[name] and C.gold1 or C.text, MaxText = 18,
+	})
+
+	local valueLabel = label(frame, formatValue(v), UDim2.new(0.22, 0, 0.62, 0), UDim2.new(0.44, 0, 0.19, 0), {
+		TextColor3 = C.dim, TextXAlignment = Enum.TextXAlignment.Right, MaxText = 17,
+	})
+
+	local row = { frame = frame, value = valueLabel, kind = kind }
+
+	if kind == "number" then
+		local set = button(frame, "Set", C.blue, UDim2.new(0.15, 0, 0, 28), UDim2.new(0.68, 0, 0, 3))
+		local add = button(frame, "+ Add", C.green, UDim2.new(0.15, 0, 0, 28), UDim2.new(0.845, 0, 0, 3))
+
+		set.Activated:Connect(function()
+			local n = amountOrWarn()
+			if n then send(name, "set", n) end
+		end)
+
+		add.Activated:Connect(function()
+			local n = amountOrWarn()
+			if n then send(name, "add", n) end
+		end)
+	else
+		local flip = button(frame, v and "ON" or "OFF", v and C.green or C.grey, UDim2.new(0.315, 0, 0, 28), UDim2.new(0.68, 0, 0, 3))
+		paintBool(flip, v)
+		row.flip = flip
+		valueLabel.Visible = false
+
+		flip.Activated:Connect(function()
+			send(name, "toggle")
+		end)
+	end
+
+	rows[name] = row
+end
+
+local function applySearch()
+	local q = search.Text:lower()
+	for name, row in pairs(rows) do
+		row.frame.Visible = q == "" or name:lower():find(q, 1, true) ~= nil
+	end
+end
+
+local function rebuildOrder()
+	local names = {}
+	for name in pairs(rows) do table.insert(names, name) end
+
+	table.sort(names, function(a, b)
+		local oa, ob = orderOf(a), orderOf(b)
+		if oa ~= ob then return oa &lt; ob end
+		-- numbers before on/off values, then A-Z
+		local ka, kb = rows[a].kind, rows[b].kind
+		if ka ~= kb then return ka == "number" end
+		return a:lower() &lt; b:lower()
+	end)
+
+	for i, name in ipairs(names) do
+		rows[name].frame.LayoutOrder = i
+	end
+end
+
+local function syncRow(name, v)
+	if HIDDEN[name] or name:sub(1, 1) == "_" then return end
+
+	local kind = type(v)
+	local row = rows[name]
+
+	if kind ~= "number" and kind ~= "boolean" then
+		if row then row.frame:Destroy() rows[name] = nil end
+		return
+	end
+
+	if row and row.kind ~= kind then
+		row.frame:Destroy()
+		rows[name] = nil
+		row = nil
+	end
+
+	if not row then
+		makeRow(name, v)
+		rebuildOrder()
+		applySearch()
+		return
+	end
+
+	if kind == "number" then
+		row.value.Text = formatValue(v)
+	else
+		paintBool(row.flip, v)
+	end
+end
+
+-- only currencies are tracked/rendered now (tracking every attribute caused lag).
+-- use the custom name+value row below for anything else.
+for _, name in ipairs(CURRENCIES) do
+	local v = player:GetAttribute(name)
+	if v ~= nil then
+		syncRow(name, v)
+	end
+end
+rebuildOrder()
+
+player.AttributeChanged:Connect(function(name)
+	if not currencyIndex[name] then return end
+	syncRow(name, player:GetAttribute(name))
+end)
+
+search:GetPropertyChangedSignal("Text"):Connect(applySearch)
+
+------------------------------------------------------------------------------------------
+-- footer buttons
+------------------------------------------------------------------------------------------
+giveAll.Activated:Connect(function()
+	local n = amountOrWarn()
+	if not n then return end
+
+	local count = 0
+	for _, name in ipairs(CURRENCIES) do
+		if type(player:GetAttribute(name)) == "number" and send(name, "set", n) then
+			count += 1
+		end
+	end
+
+	toast("Set " .. count .. " currencies to " .. NumberFormat.abbreviate(n), true)
+end)
+
+customSet.Activated:Connect(function()
+	local name = customName.Text:gsub("%s", "")
+	local text = customValue.Text:gsub("%s", ""):lower()
+
+	if name == "" then
+		toast("Type a value name", false)
+		return
+	end
+
+	if text == "true" or text == "on" then
+		send(name, "set", true)
+	elseif text == "false" or text == "off" then
+		send(name, "set", false)
+	else
+		local n = parseAmount(text)
+		if n then
+			send(name, "set", n)
+		else
+			toast("Value must be a number or true/false", false)
+		end
+	end
+end)
+
+------------------------------------------------------------------------------------------
+-- open / close
+------------------------------------------------------------------------------------------
+local isOpen = false
+
+local function setOpen(open)
+	isOpen = open
+
+	if open then
+		panel.Visible = true
+		openScale.Scale = 0.6
+		TweenService:Create(openScale, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 }):Play()
+	else
+		local t = TweenService:Create(openScale, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.In), { Scale = 0.6 })
+		t:Play()
+		t.Completed:Connect(function()
+			if not isOpen then panel.Visible = false end
+		end)
+	end
+end
+
+toggle.Activated:Connect(function()
+	setOpen(not isOpen)
+end)
+
+close.Activated:Connect(function()
+	setOpen(false)
+end)
+</ProtectedString>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null /></Content>
+					<token name="RunContext">0</token>
+					<string name="ScriptGuid">{04509F4E-61D2-4FAF-9DCB-E4E75B19D510}</string>
+					<BinaryString name="AttributesSerialize" />
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">OwnerPanelClient</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">40e32b73abd9ad5f0ac9bc4d0003538d</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<SharedStrings><SharedString md5="yuZpQdnvvUBOTYh1jqZ2cA==" />
+		</SharedStrings></roblox>

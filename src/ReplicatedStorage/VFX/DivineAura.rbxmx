@@ -1,0 +1,976 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4"><Item class="Part" referent="RBX550C79C231C3479A834A9DEEE498D733">
+				<Properties>
+					<token name="shape">1</token>
+					<token name="formFactorRaw">1</token>
+					<bool name="Anchored">false</bool>
+					<bool name="AudioCanCollide">true</bool>
+					<float name="BackParamA">-0.5</float>
+					<float name="BackParamB">0.5</float>
+					<token name="BackSurface">0</token>
+					<token name="BackSurfaceInput">0</token>
+					<float name="BottomParamA">-0.5</float>
+					<float name="BottomParamB">0.5</float>
+					<token name="BottomSurface">0</token>
+					<token name="BottomSurfaceInput">0</token>
+					<CoordinateFrame name="CFrame">
+						<X>-475.942474</X>
+						<Y>4234.23975</Y>
+						<Z>618.919189</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<bool name="CanCollide">false</bool>
+					<bool name="CanQuery">true</bool>
+					<bool name="CanTouch">true</bool>
+					<bool name="CastShadow">true</bool>
+					<string name="CollisionGroup">Default</string>
+					<int name="CollisionGroupId">0</int>
+					<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+					<PhysicalProperties name="CustomPhysicalProperties">
+						<CustomPhysics>false</CustomPhysics>
+					</PhysicalProperties>
+					<bool name="EnableFluidForces">false</bool>
+					<float name="FrontParamA">-0.5</float>
+					<float name="FrontParamB">0.5</float>
+					<token name="FrontSurface">0</token>
+					<token name="FrontSurfaceInput">0</token>
+					<float name="LeftParamA">-0.5</float>
+					<float name="LeftParamB">0.5</float>
+					<token name="LeftSurface">0</token>
+					<token name="LeftSurfaceInput">0</token>
+					<bool name="Locked">false</bool>
+					<bool name="Massless">false</bool>
+					<token name="Material">256</token>
+					<string name="MaterialVariantSerialized" />
+					<CoordinateFrame name="PivotOffset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="Reflectance">0</float>
+					<float name="RightParamA">-0.5</float>
+					<float name="RightParamB">0.5</float>
+					<token name="RightSurface">0</token>
+					<token name="RightSurfaceInput">0</token>
+					<int name="RootPriority">0</int>
+					<Vector3 name="RotVelocity">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<float name="TopParamA">-0.5</float>
+					<float name="TopParamB">0.5</float>
+					<token name="TopSurface">0</token>
+					<token name="TopSurfaceInput">0</token>
+					<float name="Transparency">1</float>
+					<Vector3 name="Velocity">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="size">
+						<X>2.81497383</X>
+						<Y>5.51227522</Y>
+						<Z>0.837687194</Z>
+					</Vector3>
+					<BinaryString name="AttributesSerialize" />
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">DivineAura</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+					<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025edf</UniqueId>
+				</Properties>
+				<Item class="ParticleEmitter" referent="RBX1A710554EC1547078D7E932798AF3DD4">
+					<Properties>
+						<Vector3 name="Acceleration">
+							<X>0</X>
+							<Y>2</Y>
+							<Z>0</Z>
+						</Vector3>
+						<float name="Brightness">10</float>
+						<ColorSequence name="Color">0 1 0.650981 0.32549 0 1 1 0.650981 0.32549 0 </ColorSequence>
+						<float name="Drag">8</float>
+						<token name="EmissionDirection">1</token>
+						<bool name="Enabled">true</bool>
+						<bool name="FlipbookBlendFrames">true</bool>
+						<NumberRange name="FlipbookFramerate">30 30 </NumberRange>
+						<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+						<token name="FlipbookLayout">4</token>
+						<token name="FlipbookMode">1</token>
+						<int name="FlipbookSizeX">8</int>
+						<int name="FlipbookSizeY">8</int>
+						<bool name="FlipbookStartRandom">false</bool>
+						<NumberRange name="Lifetime">0.75 1 </NumberRange>
+						<float name="LightEmission">1</float>
+						<float name="LightInfluence">0</float>
+						<bool name="LockedToPart">true</bool>
+						<token name="Orientation">0</token>
+						<float name="Rate">14</float>
+						<NumberRange name="RotSpeed">0 0 </NumberRange>
+						<NumberRange name="Rotation">-500 500 </NumberRange>
+						<token name="Shape">0</token>
+						<token name="ShapeInOut">0</token>
+						<float name="ShapePartial">1</float>
+						<token name="ShapeStyle">0</token>
+						<NumberSequence name="Size">0 2.44001 0 1 5.13011 0 </NumberSequence>
+						<NumberRange name="Speed">2.5 5 </NumberRange>
+						<Vector2 name="SpreadAngle">
+							<X>-30</X>
+							<Y>-30</Y>
+						</Vector2>
+						<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+						<Content name="Texture"><url>rbxassetid://14708058425</url></Content>
+						<float name="TimeScale">0.150000006</float>
+						<NumberSequence name="Transparency">0 1 0 0.5 0.579235 0.191257 1 1 0 </NumberSequence>
+						<float name="VelocityInheritance">0</float>
+						<bool name="WindAffectsDrag">false</bool>
+						<float name="ZOffset">2</float>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">ParticleEmitter</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+						<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025ee0</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ParticleEmitter" referent="RBX2EE50B0C217A4A4E95783D43CCB18EA2">
+					<Properties>
+						<Vector3 name="Acceleration">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<float name="Brightness">10</float>
+						<ColorSequence name="Color">0 1 0.650981 0.32549 0 1 1 0.650981 0.32549 0 </ColorSequence>
+						<float name="Drag">8</float>
+						<token name="EmissionDirection">1</token>
+						<bool name="Enabled">true</bool>
+						<bool name="FlipbookBlendFrames">true</bool>
+						<NumberRange name="FlipbookFramerate">30 30 </NumberRange>
+						<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+						<token name="FlipbookLayout">0</token>
+						<token name="FlipbookMode">1</token>
+						<int name="FlipbookSizeX">8</int>
+						<int name="FlipbookSizeY">8</int>
+						<bool name="FlipbookStartRandom">false</bool>
+						<NumberRange name="Lifetime">0.75 1 </NumberRange>
+						<float name="LightEmission">1</float>
+						<float name="LightInfluence">0</float>
+						<bool name="LockedToPart">true</bool>
+						<token name="Orientation">0</token>
+						<float name="Rate">14</float>
+						<NumberRange name="RotSpeed">0 0 </NumberRange>
+						<NumberRange name="Rotation">-500 500 </NumberRange>
+						<token name="Shape">0</token>
+						<token name="ShapeInOut">0</token>
+						<float name="ShapePartial">1</float>
+						<token name="ShapeStyle">0</token>
+						<NumberSequence name="Size">0 1 0 1 3.09945 0 </NumberSequence>
+						<NumberRange name="Speed">0.01 2.5 </NumberRange>
+						<Vector2 name="SpreadAngle">
+							<X>-500</X>
+							<Y>500</Y>
+						</Vector2>
+						<NumberSequence name="Squash">0 0 0 1 -1.09836 0 </NumberSequence>
+						<Content name="Texture"><url>rbxassetid://77320872546229</url></Content>
+						<float name="TimeScale">0.150000006</float>
+						<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+						<float name="VelocityInheritance">0</float>
+						<bool name="WindAffectsDrag">false</bool>
+						<float name="ZOffset">-2</float>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">ParticleEmitter</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+						<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025ee1</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ParticleEmitter" referent="RBXAF85E65F7A144F688928FFBDFE4F4543">
+					<Properties>
+						<Vector3 name="Acceleration">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<float name="Brightness">10</float>
+						<ColorSequence name="Color">0 1 0.650981 0.32549 0 1 1 0.650981 0.32549 0 </ColorSequence>
+						<float name="Drag">3</float>
+						<token name="EmissionDirection">1</token>
+						<bool name="Enabled">true</bool>
+						<bool name="FlipbookBlendFrames">true</bool>
+						<NumberRange name="FlipbookFramerate">30 30 </NumberRange>
+						<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+						<token name="FlipbookLayout">0</token>
+						<token name="FlipbookMode">1</token>
+						<int name="FlipbookSizeX">4</int>
+						<int name="FlipbookSizeY">4</int>
+						<bool name="FlipbookStartRandom">false</bool>
+						<NumberRange name="Lifetime">0.75 1 </NumberRange>
+						<float name="LightEmission">1</float>
+						<float name="LightInfluence">0</float>
+						<bool name="LockedToPart">false</bool>
+						<token name="Orientation">0</token>
+						<float name="Rate">60</float>
+						<NumberRange name="RotSpeed">-360 360 </NumberRange>
+						<NumberRange name="Rotation">-500 500 </NumberRange>
+						<token name="Shape">0</token>
+						<token name="ShapeInOut">0</token>
+						<float name="ShapePartial">1</float>
+						<token name="ShapeStyle">0</token>
+						<NumberSequence name="Size">0 0 0 0.247357 0.110497 0.110497 1 0 0 </NumberSequence>
+						<NumberRange name="Speed">7 14 </NumberRange>
+						<Vector2 name="SpreadAngle">
+							<X>-500</X>
+							<Y>500</Y>
+						</Vector2>
+						<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+						<Content name="Texture"><url>rbxassetid://96152837807771</url></Content>
+						<float name="TimeScale">0.0500000007</float>
+						<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+						<float name="VelocityInheritance">0</float>
+						<bool name="WindAffectsDrag">false</bool>
+						<float name="ZOffset">2.5999999</float>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">ParticleEmitter</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+						<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025ee2</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="Attachment" referent="RBXE1F36854A4FC4749BB80D5968538A2D9">
+					<Properties>
+						<CoordinateFrame name="CFrame">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+							<R00>1</R00>
+							<R01>0</R01>
+							<R02>0</R02>
+							<R10>0</R10>
+							<R11>1</R11>
+							<R12>0</R12>
+							<R20>0</R20>
+							<R21>0</R21>
+							<R22>1</R22>
+						</CoordinateFrame>
+						<bool name="Visible">false</bool>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">Attachment</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+						<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025ee3</UniqueId>
+					</Properties>
+					<Item class="ParticleEmitter" referent="RBX6679EA095EB64CA1A4E3D4BE6D4EEA68">
+						<Properties>
+							<Vector3 name="Acceleration">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<float name="Brightness">1</float>
+							<ColorSequence name="Color">0 1 0.654902 0.32549 0 1 1 0.654902 0.32549 0 </ColorSequence>
+							<float name="Drag">0</float>
+							<token name="EmissionDirection">1</token>
+							<bool name="Enabled">true</bool>
+							<bool name="FlipbookBlendFrames">true</bool>
+							<NumberRange name="FlipbookFramerate">1 1 </NumberRange>
+							<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+							<token name="FlipbookLayout">0</token>
+							<token name="FlipbookMode">0</token>
+							<int name="FlipbookSizeX">1</int>
+							<int name="FlipbookSizeY">1</int>
+							<bool name="FlipbookStartRandom">false</bool>
+							<NumberRange name="Lifetime">1.75 1.75 </NumberRange>
+							<float name="LightEmission">1</float>
+							<float name="LightInfluence">0</float>
+							<bool name="LockedToPart">true</bool>
+							<token name="Orientation">0</token>
+							<float name="Rate">1.75</float>
+							<NumberRange name="RotSpeed">0 0 </NumberRange>
+							<NumberRange name="Rotation">0 0 </NumberRange>
+							<token name="Shape">0</token>
+							<token name="ShapeInOut">0</token>
+							<float name="ShapePartial">1</float>
+							<token name="ShapeStyle">0</token>
+							<NumberSequence name="Size">0 1 0 1 2.92818 0 </NumberSequence>
+							<NumberRange name="Speed">0.001 0.001 </NumberRange>
+							<Vector2 name="SpreadAngle">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+							<Content name="Texture"><url>rbxassetid://129644157697666</url></Content>
+							<float name="TimeScale">0.300000012</float>
+							<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+							<float name="VelocityInheritance">0</float>
+							<bool name="WindAffectsDrag">false</bool>
+							<float name="ZOffset">2</float>
+							<BinaryString name="AttributesSerialize" />
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<string name="Name">ParticleEmitter</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+							<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025ee4</UniqueId>
+						</Properties>
+					</Item>
+					<Item class="ParticleEmitter" referent="RBX890CBB69587E4D3F9C06B2F43146B389">
+						<Properties>
+							<Vector3 name="Acceleration">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<float name="Brightness">20</float>
+							<ColorSequence name="Color">0 1 0.654902 0.32549 0 1 1 0.654902 0.32549 0 </ColorSequence>
+							<float name="Drag">0</float>
+							<token name="EmissionDirection">1</token>
+							<bool name="Enabled">true</bool>
+							<bool name="FlipbookBlendFrames">true</bool>
+							<NumberRange name="FlipbookFramerate">1 1 </NumberRange>
+							<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+							<token name="FlipbookLayout">0</token>
+							<token name="FlipbookMode">0</token>
+							<int name="FlipbookSizeX">1</int>
+							<int name="FlipbookSizeY">1</int>
+							<bool name="FlipbookStartRandom">false</bool>
+							<NumberRange name="Lifetime">1.75 1.75 </NumberRange>
+							<float name="LightEmission">1</float>
+							<float name="LightInfluence">0</float>
+							<bool name="LockedToPart">true</bool>
+							<token name="Orientation">1</token>
+							<float name="Rate">1.75</float>
+							<NumberRange name="RotSpeed">0 0 </NumberRange>
+							<NumberRange name="Rotation">0 0 </NumberRange>
+							<token name="Shape">0</token>
+							<token name="ShapeInOut">0</token>
+							<float name="ShapePartial">1</float>
+							<token name="ShapeStyle">0</token>
+							<NumberSequence name="Size">0 5 0 1 7.67956 0 </NumberSequence>
+							<NumberRange name="Speed">0.001 0.001 </NumberRange>
+							<Vector2 name="SpreadAngle">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<NumberSequence name="Squash">0 0 0 1 0.213115 0 </NumberSequence>
+							<Content name="Texture"><url>rbxassetid://136895557582755</url></Content>
+							<float name="TimeScale">0.300000012</float>
+							<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+							<float name="VelocityInheritance">0</float>
+							<bool name="WindAffectsDrag">false</bool>
+							<float name="ZOffset">-0.949999988</float>
+							<BinaryString name="AttributesSerialize" />
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<string name="Name">ParticleEmitter</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+							<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025ee5</UniqueId>
+						</Properties>
+					</Item>
+					<Item class="ParticleEmitter" referent="RBX028683A850514C1BBEA3AFEE54969D15">
+						<Properties>
+							<Vector3 name="Acceleration">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<float name="Brightness">0.075000003</float>
+							<ColorSequence name="Color">0 1 0.654902 0.32549 0 1 1 0.654902 0.32549 0 </ColorSequence>
+							<float name="Drag">0</float>
+							<token name="EmissionDirection">1</token>
+							<bool name="Enabled">true</bool>
+							<bool name="FlipbookBlendFrames">true</bool>
+							<NumberRange name="FlipbookFramerate">1 1 </NumberRange>
+							<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+							<token name="FlipbookLayout">0</token>
+							<token name="FlipbookMode">0</token>
+							<int name="FlipbookSizeX">1</int>
+							<int name="FlipbookSizeY">1</int>
+							<bool name="FlipbookStartRandom">false</bool>
+							<NumberRange name="Lifetime">1.75 1.75 </NumberRange>
+							<float name="LightEmission">1</float>
+							<float name="LightInfluence">0</float>
+							<bool name="LockedToPart">true</bool>
+							<token name="Orientation">1</token>
+							<float name="Rate">1.75</float>
+							<NumberRange name="RotSpeed">0 0 </NumberRange>
+							<NumberRange name="Rotation">0 0 </NumberRange>
+							<token name="Shape">0</token>
+							<token name="ShapeInOut">0</token>
+							<float name="ShapePartial">1</float>
+							<token name="ShapeStyle">0</token>
+							<NumberSequence name="Size">0 6.19001 0 1 10.0001 0 </NumberSequence>
+							<NumberRange name="Speed">0.001 0.001 </NumberRange>
+							<Vector2 name="SpreadAngle">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+							<Content name="Texture"><url>rbxassetid://130659106282423</url></Content>
+							<float name="TimeScale">0.300000012</float>
+							<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+							<float name="VelocityInheritance">0</float>
+							<bool name="WindAffectsDrag">false</bool>
+							<float name="ZOffset">-1.95000005</float>
+							<BinaryString name="AttributesSerialize" />
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<string name="Name">ParticleEmitter</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+							<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025ee6</UniqueId>
+						</Properties>
+					</Item>
+					<Item class="ParticleEmitter" referent="RBX07A1FBB95FA949998BC49E830DE0D487">
+						<Properties>
+							<Vector3 name="Acceleration">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<float name="Brightness">1</float>
+							<ColorSequence name="Color">0 1 0.654902 0.32549 0 1 1 0.654902 0.32549 0 </ColorSequence>
+							<float name="Drag">0</float>
+							<token name="EmissionDirection">1</token>
+							<bool name="Enabled">true</bool>
+							<bool name="FlipbookBlendFrames">true</bool>
+							<NumberRange name="FlipbookFramerate">1 1 </NumberRange>
+							<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+							<token name="FlipbookLayout">0</token>
+							<token name="FlipbookMode">0</token>
+							<int name="FlipbookSizeX">1</int>
+							<int name="FlipbookSizeY">1</int>
+							<bool name="FlipbookStartRandom">false</bool>
+							<NumberRange name="Lifetime">1.75 1.75 </NumberRange>
+							<float name="LightEmission">1</float>
+							<float name="LightInfluence">0</float>
+							<bool name="LockedToPart">true</bool>
+							<token name="Orientation">0</token>
+							<float name="Rate">1.75</float>
+							<NumberRange name="RotSpeed">0 0 </NumberRange>
+							<NumberRange name="Rotation">0 0 </NumberRange>
+							<token name="Shape">0</token>
+							<token name="ShapeInOut">0</token>
+							<float name="ShapePartial">1</float>
+							<token name="ShapeStyle">0</token>
+							<NumberSequence name="Size">0 7.01001 0 1 15.2502 0 </NumberSequence>
+							<NumberRange name="Speed">0.001 0.001 </NumberRange>
+							<Vector2 name="SpreadAngle">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+							<Content name="Texture"><url>rbxassetid://118467696266793</url></Content>
+							<float name="TimeScale">0.300000012</float>
+							<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+							<float name="VelocityInheritance">0</float>
+							<bool name="WindAffectsDrag">false</bool>
+							<float name="ZOffset">2</float>
+							<BinaryString name="AttributesSerialize" />
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<string name="Name">ParticleEmitter</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+							<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025ee7</UniqueId>
+						</Properties>
+					</Item>
+					<Item class="ParticleEmitter" referent="RBX072D0CA9B1E6419192D56B3491B2235A">
+						<Properties>
+							<Vector3 name="Acceleration">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<float name="Brightness">2.10500002</float>
+							<ColorSequence name="Color">0 1 0.654902 0.32549 0 1 1 0.654902 0.32549 0 </ColorSequence>
+							<float name="Drag">0</float>
+							<token name="EmissionDirection">1</token>
+							<bool name="Enabled">true</bool>
+							<bool name="FlipbookBlendFrames">true</bool>
+							<NumberRange name="FlipbookFramerate">1 1 </NumberRange>
+							<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+							<token name="FlipbookLayout">0</token>
+							<token name="FlipbookMode">0</token>
+							<int name="FlipbookSizeX">1</int>
+							<int name="FlipbookSizeY">1</int>
+							<bool name="FlipbookStartRandom">false</bool>
+							<NumberRange name="Lifetime">1.75 1.75 </NumberRange>
+							<float name="LightEmission">1</float>
+							<float name="LightInfluence">0</float>
+							<bool name="LockedToPart">true</bool>
+							<token name="Orientation">0</token>
+							<float name="Rate">1.75</float>
+							<NumberRange name="RotSpeed">0 0 </NumberRange>
+							<NumberRange name="Rotation">0 0 </NumberRange>
+							<token name="Shape">0</token>
+							<token name="ShapeInOut">0</token>
+							<float name="ShapePartial">1</float>
+							<token name="ShapeStyle">0</token>
+							<NumberSequence name="Size">0 1.94092 0 1 7.00008 0 </NumberSequence>
+							<NumberRange name="Speed">0.001 0.001 </NumberRange>
+							<Vector2 name="SpreadAngle">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+							<Content name="Texture"><url>rbxassetid://105464610912375</url></Content>
+							<float name="TimeScale">0.300000012</float>
+							<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+							<float name="VelocityInheritance">0</float>
+							<bool name="WindAffectsDrag">false</bool>
+							<float name="ZOffset">-2</float>
+							<BinaryString name="AttributesSerialize" />
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<string name="Name">ParticleEmitter</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+							<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025ee8</UniqueId>
+						</Properties>
+					</Item>
+				</Item>
+				<Item class="ParticleEmitter" referent="RBX87549066D97A465BABDE4A1FFB0323F0">
+					<Properties>
+						<Vector3 name="Acceleration">
+							<X>0</X>
+							<Y>2</Y>
+							<Z>0</Z>
+						</Vector3>
+						<float name="Brightness">10</float>
+						<ColorSequence name="Color">0 1 0.650981 0.32549 0 1 1 0.650981 0.32549 0 </ColorSequence>
+						<float name="Drag">8</float>
+						<token name="EmissionDirection">1</token>
+						<bool name="Enabled">true</bool>
+						<bool name="FlipbookBlendFrames">true</bool>
+						<NumberRange name="FlipbookFramerate">30 30 </NumberRange>
+						<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+						<token name="FlipbookLayout">4</token>
+						<token name="FlipbookMode">1</token>
+						<int name="FlipbookSizeX">8</int>
+						<int name="FlipbookSizeY">8</int>
+						<bool name="FlipbookStartRandom">false</bool>
+						<NumberRange name="Lifetime">0.75 1 </NumberRange>
+						<float name="LightEmission">1</float>
+						<float name="LightInfluence">0</float>
+						<bool name="LockedToPart">true</bool>
+						<token name="Orientation">0</token>
+						<float name="Rate">14</float>
+						<NumberRange name="RotSpeed">-360 360 </NumberRange>
+						<NumberRange name="Rotation">-500 500 </NumberRange>
+						<token name="Shape">0</token>
+						<token name="ShapeInOut">0</token>
+						<float name="ShapePartial">1</float>
+						<token name="ShapeStyle">0</token>
+						<NumberSequence name="Size">0 0 0 0.299683 0.607734 0.607734 1 0 0 </NumberSequence>
+						<NumberRange name="Speed">2.5 5 </NumberRange>
+						<Vector2 name="SpreadAngle">
+							<X>-30</X>
+							<Y>-30</Y>
+						</Vector2>
+						<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+						<Content name="Texture"><url>rbxassetid://15441262724</url></Content>
+						<float name="TimeScale">1</float>
+						<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+						<float name="VelocityInheritance">0</float>
+						<bool name="WindAffectsDrag">false</bool>
+						<float name="ZOffset">2.0999999</float>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">ParticleEmitter</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+						<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025ee9</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="PointLight" referent="RBX4C7611F7D19E4DBEB85E7F724DD3E88E">
+					<Properties>
+						<float name="Range">8</float>
+						<float name="Brightness">0.899999976</float>
+						<Color3 name="Color">
+							<R>1</R>
+							<G>0.654901862</G>
+							<B>0.325490236</B>
+						</Color3>
+						<bool name="Enabled">true</bool>
+						<bool name="Shadows">true</bool>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">PointLight</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+						<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025eea</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ParticleEmitter" referent="RBX6DF8B923268846259B0781155A742380">
+					<Properties>
+						<Vector3 name="Acceleration">
+							<X>0</X>
+							<Y>2</Y>
+							<Z>0</Z>
+						</Vector3>
+						<float name="Brightness">0.75</float>
+						<ColorSequence name="Color">0 0.588235 0.376471 0.192157 0 1 0.588235 0.376471 0.192157 0 </ColorSequence>
+						<float name="Drag">8</float>
+						<token name="EmissionDirection">1</token>
+						<bool name="Enabled">true</bool>
+						<bool name="FlipbookBlendFrames">true</bool>
+						<NumberRange name="FlipbookFramerate">30 30 </NumberRange>
+						<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+						<token name="FlipbookLayout">4</token>
+						<token name="FlipbookMode">1</token>
+						<int name="FlipbookSizeX">4</int>
+						<int name="FlipbookSizeY">4</int>
+						<bool name="FlipbookStartRandom">false</bool>
+						<NumberRange name="Lifetime">0.75 1 </NumberRange>
+						<float name="LightEmission">0</float>
+						<float name="LightInfluence">0</float>
+						<bool name="LockedToPart">true</bool>
+						<token name="Orientation">0</token>
+						<float name="Rate">14</float>
+						<NumberRange name="RotSpeed">0 0 </NumberRange>
+						<NumberRange name="Rotation">-500 500 </NumberRange>
+						<token name="Shape">0</token>
+						<token name="ShapeInOut">0</token>
+						<float name="ShapePartial">1</float>
+						<token name="ShapeStyle">0</token>
+						<NumberSequence name="Size">0 11.65 0 1 17.7202 0 </NumberSequence>
+						<NumberRange name="Speed">2.5 5 </NumberRange>
+						<Vector2 name="SpreadAngle">
+							<X>-30</X>
+							<Y>-30</Y>
+						</Vector2>
+						<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+						<Content name="Texture"><url>rbxassetid://123675807271031</url></Content>
+						<float name="TimeScale">0.100000001</float>
+						<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+						<float name="VelocityInheritance">0</float>
+						<bool name="WindAffectsDrag">false</bool>
+						<float name="ZOffset">-1</float>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">ParticleEmitter</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+						<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025eeb</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ParticleEmitter" referent="RBX5D1CEE7A208147DAA5E30941CE5CCA30">
+					<Properties>
+						<Vector3 name="Acceleration">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<float name="Brightness">10</float>
+						<ColorSequence name="Color">0 1 0.650981 0.32549 0 1 1 0.650981 0.32549 0 </ColorSequence>
+						<float name="Drag">8</float>
+						<token name="EmissionDirection">1</token>
+						<bool name="Enabled">true</bool>
+						<bool name="FlipbookBlendFrames">true</bool>
+						<NumberRange name="FlipbookFramerate">30 30 </NumberRange>
+						<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+						<token name="FlipbookLayout">0</token>
+						<token name="FlipbookMode">1</token>
+						<int name="FlipbookSizeX">8</int>
+						<int name="FlipbookSizeY">8</int>
+						<bool name="FlipbookStartRandom">false</bool>
+						<NumberRange name="Lifetime">0.75 1 </NumberRange>
+						<float name="LightEmission">1</float>
+						<float name="LightInfluence">0</float>
+						<bool name="LockedToPart">true</bool>
+						<token name="Orientation">0</token>
+						<float name="Rate">14</float>
+						<NumberRange name="RotSpeed">0 0 </NumberRange>
+						<NumberRange name="Rotation">0 0 </NumberRange>
+						<token name="Shape">0</token>
+						<token name="ShapeInOut">0</token>
+						<float name="ShapePartial">1</float>
+						<token name="ShapeStyle">0</token>
+						<NumberSequence name="Size">0 0.718232 0 1 3.70166 0 </NumberSequence>
+						<NumberRange name="Speed">2.5 5 </NumberRange>
+						<Vector2 name="SpreadAngle">
+							<X>-500</X>
+							<Y>500</Y>
+						</Vector2>
+						<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+						<Content name="Texture"><url>rbxassetid://100666176367061</url></Content>
+						<float name="TimeScale">0.5</float>
+						<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+						<float name="VelocityInheritance">0</float>
+						<bool name="WindAffectsDrag">false</bool>
+						<float name="ZOffset">2.0999999</float>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">ParticleEmitter</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+						<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025eec</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ParticleEmitter" referent="RBX8A425CB1E5154D9E9DD9E49D5171754F">
+					<Properties>
+						<Vector3 name="Acceleration">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<float name="Brightness">10</float>
+						<ColorSequence name="Color">0 1 0.650981 0.32549 0 1 1 0.650981 0.32549 0 </ColorSequence>
+						<float name="Drag">2.75</float>
+						<token name="EmissionDirection">1</token>
+						<bool name="Enabled">true</bool>
+						<bool name="FlipbookBlendFrames">true</bool>
+						<NumberRange name="FlipbookFramerate">1 1 </NumberRange>
+						<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+						<token name="FlipbookLayout">0</token>
+						<token name="FlipbookMode">0</token>
+						<int name="FlipbookSizeX">1</int>
+						<int name="FlipbookSizeY">1</int>
+						<bool name="FlipbookStartRandom">false</bool>
+						<NumberRange name="Lifetime">0.75 1 </NumberRange>
+						<float name="LightEmission">1</float>
+						<float name="LightInfluence">0</float>
+						<bool name="LockedToPart">false</bool>
+						<token name="Orientation">0</token>
+						<float name="Rate">20</float>
+						<NumberRange name="RotSpeed">-360 360 </NumberRange>
+						<NumberRange name="Rotation">-500 500 </NumberRange>
+						<token name="Shape">0</token>
+						<token name="ShapeInOut">0</token>
+						<float name="ShapePartial">1</float>
+						<token name="ShapeStyle">0</token>
+						<NumberSequence name="Size">0 0 0 0.213531 0.220994 0.220994 1 0 0 </NumberSequence>
+						<NumberRange name="Speed">5 10 </NumberRange>
+						<Vector2 name="SpreadAngle">
+							<X>-500</X>
+							<Y>500</Y>
+						</Vector2>
+						<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+						<Content name="Texture"><url>rbxassetid://8681336770</url></Content>
+						<float name="TimeScale">0.699999988</float>
+						<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+						<float name="VelocityInheritance">0</float>
+						<bool name="WindAffectsDrag">false</bool>
+						<float name="ZOffset">2.0999999</float>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">ParticleEmitter</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+						<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025eed</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ParticleEmitter" referent="RBX80D96A495A7742829E3FA73FDF21C8C2">
+					<Properties>
+						<Vector3 name="Acceleration">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<float name="Brightness">10</float>
+						<ColorSequence name="Color">0 1 0.654902 0.32549 0 1 1 0.654902 0.32549 0 </ColorSequence>
+						<float name="Drag">8</float>
+						<token name="EmissionDirection">1</token>
+						<bool name="Enabled">true</bool>
+						<bool name="FlipbookBlendFrames">true</bool>
+						<NumberRange name="FlipbookFramerate">30 30 </NumberRange>
+						<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+						<token name="FlipbookLayout">4</token>
+						<token name="FlipbookMode">1</token>
+						<int name="FlipbookSizeX">8</int>
+						<int name="FlipbookSizeY">8</int>
+						<bool name="FlipbookStartRandom">false</bool>
+						<NumberRange name="Lifetime">0.75 1 </NumberRange>
+						<float name="LightEmission">1</float>
+						<float name="LightInfluence">0</float>
+						<bool name="LockedToPart">true</bool>
+						<token name="Orientation">0</token>
+						<float name="Rate">14</float>
+						<NumberRange name="RotSpeed">0 0 </NumberRange>
+						<NumberRange name="Rotation">-500 500 </NumberRange>
+						<token name="Shape">0</token>
+						<token name="ShapeInOut">0</token>
+						<float name="ShapePartial">1</float>
+						<token name="ShapeStyle">0</token>
+						<NumberSequence name="Size">0 1 0 1 3.09945 0 </NumberSequence>
+						<NumberRange name="Speed">0.01 2.5 </NumberRange>
+						<Vector2 name="SpreadAngle">
+							<X>-500</X>
+							<Y>500</Y>
+						</Vector2>
+						<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+						<Content name="Texture"><url>rbxassetid://123266658426840</url></Content>
+						<float name="TimeScale">0.150000006</float>
+						<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+						<float name="VelocityInheritance">0</float>
+						<bool name="WindAffectsDrag">false</bool>
+						<float name="ZOffset">-2</float>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">ParticleEmitter</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+						<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025eee</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ParticleEmitter" referent="RBX08C25134FC484940A592CFBAD80B813A">
+					<Properties>
+						<Vector3 name="Acceleration">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<float name="Brightness">15</float>
+						<ColorSequence name="Color">0 1 0.650981 0.32549 0 1 1 0.650981 0.32549 0 </ColorSequence>
+						<float name="Drag">7.5</float>
+						<token name="EmissionDirection">1</token>
+						<bool name="Enabled">true</bool>
+						<bool name="FlipbookBlendFrames">true</bool>
+						<NumberRange name="FlipbookFramerate">30 30 </NumberRange>
+						<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+						<token name="FlipbookLayout">0</token>
+						<token name="FlipbookMode">1</token>
+						<int name="FlipbookSizeX">8</int>
+						<int name="FlipbookSizeY">8</int>
+						<bool name="FlipbookStartRandom">false</bool>
+						<NumberRange name="Lifetime">0.75 1 </NumberRange>
+						<float name="LightEmission">1</float>
+						<float name="LightInfluence">0</float>
+						<bool name="LockedToPart">true</bool>
+						<token name="Orientation">0</token>
+						<float name="Rate">14</float>
+						<NumberRange name="RotSpeed">0 0 </NumberRange>
+						<NumberRange name="Rotation">-500 500 </NumberRange>
+						<token name="Shape">0</token>
+						<token name="ShapeInOut">0</token>
+						<float name="ShapePartial">1</float>
+						<token name="ShapeStyle">0</token>
+						<NumberSequence name="Size">0 1 0 1 3.09945 0 </NumberSequence>
+						<NumberRange name="Speed">0.01 2.5 </NumberRange>
+						<Vector2 name="SpreadAngle">
+							<X>-500</X>
+							<Y>500</Y>
+						</Vector2>
+						<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+						<Content name="Texture"><url>rbxassetid://95792814422994</url></Content>
+						<float name="TimeScale">0.150000006</float>
+						<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+						<float name="VelocityInheritance">0</float>
+						<bool name="WindAffectsDrag">false</bool>
+						<float name="ZOffset">-1.89999998</float>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">ParticleEmitter</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+						<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025eef</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ParticleEmitter" referent="RBX16889A1B62CA486D8B6A6C8DB0D98542">
+					<Properties>
+						<Vector3 name="Acceleration">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<float name="Brightness">10</float>
+						<ColorSequence name="Color">0 1 0.650981 0.32549 0 1 1 0.650981 0.32549 0 </ColorSequence>
+						<float name="Drag">3</float>
+						<token name="EmissionDirection">1</token>
+						<bool name="Enabled">true</bool>
+						<bool name="FlipbookBlendFrames">true</bool>
+						<NumberRange name="FlipbookFramerate">30 30 </NumberRange>
+						<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+						<token name="FlipbookLayout">0</token>
+						<token name="FlipbookMode">1</token>
+						<int name="FlipbookSizeX">4</int>
+						<int name="FlipbookSizeY">4</int>
+						<bool name="FlipbookStartRandom">false</bool>
+						<NumberRange name="Lifetime">0.75 1 </NumberRange>
+						<float name="LightEmission">0</float>
+						<float name="LightInfluence">0</float>
+						<bool name="LockedToPart">false</bool>
+						<token name="Orientation">0</token>
+						<float name="Rate">20</float>
+						<NumberRange name="RotSpeed">-360 360 </NumberRange>
+						<NumberRange name="Rotation">-500 500 </NumberRange>
+						<token name="Shape">0</token>
+						<token name="ShapeInOut">0</token>
+						<float name="ShapePartial">1</float>
+						<token name="ShapeStyle">0</token>
+						<NumberSequence name="Size">0 0 0 0.316596 0.497237 0.497237 1 0 0 </NumberSequence>
+						<NumberRange name="Speed">5 10 </NumberRange>
+						<Vector2 name="SpreadAngle">
+							<X>-500</X>
+							<Y>500</Y>
+						</Vector2>
+						<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
+						<Content name="Texture"><url>rbxassetid://7511321694</url></Content>
+						<float name="TimeScale">0.0500000007</float>
+						<NumberSequence name="Transparency">0 1 0 0.5 0 0 1 1 0 </NumberSequence>
+						<float name="VelocityInheritance">0</float>
+						<bool name="WindAffectsDrag">false</bool>
+						<float name="ZOffset">2.0999999</float>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">ParticleEmitter</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">mp498qDxy+5Q7DWJ8RoPEA==</SharedString>
+						<UniqueId name="UniqueId">58c2a27f19013fcf0acb2e8200025ef0</UniqueId>
+					</Properties>
+				</Item>
+			</Item>
+			<SharedStrings><SharedString md5="mp498qDxy+5Q7DWJ8RoPEA==">RW5hYmxlZFZGWA==</SharedString>
+		</SharedStrings></roblox>

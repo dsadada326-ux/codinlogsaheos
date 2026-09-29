@@ -1,0 +1,551 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4"><Item class="ScreenGui" referent="RBXFF0B64E32C0F4E7196C764DC7FC06D9A">
+			<Properties>
+				<bool name="ClipToDeviceSafeArea">true</bool>
+				<int name="DisplayOrder">10</int>
+				<token name="SafeAreaCompatibility">1</token>
+				<token name="ScreenInsets">2</token>
+				<bool name="Enabled">true</bool>
+				<bool name="ResetOnSpawn">false</bool>
+				<token name="ZIndexBehavior">1</token>
+				<bool name="AutoLocalize">true</bool>
+				<Ref name="RootLocalizationTable">null</Ref>
+				<token name="SelectionBehaviorDown">0</token>
+				<token name="SelectionBehaviorLeft">0</token>
+				<token name="SelectionBehaviorRight">0</token>
+				<token name="SelectionBehaviorUp">0</token>
+				<bool name="SelectionGroup">false</bool>
+				<BinaryString name="AttributesSerialize" />
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">CashGain</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<UniqueId name="UniqueId">4386c50c9615ed2d0ac62289000038d3</UniqueId>
+			</Properties>
+			<Item class="Frame" referent="RBXA96B14511ACA4A37AC0116D88671873D">
+				<Properties>
+					<token name="Style">0</token>
+					<bool name="Active">false</bool>
+					<Vector2 name="AnchorPoint">
+						<X>1</X>
+						<Y>0.5</Y>
+					</Vector2>
+					<token name="AutomaticSize">3</token>
+					<Color3 name="BackgroundColor3">
+						<R>0.639215708</R>
+						<G>0.635294139</G>
+						<B>0.647058845</B>
+					</Color3>
+					<float name="BackgroundTransparency">1</float>
+					<Color3 name="BorderColor3">
+						<R>0.105882354</R>
+						<G>0.164705887</G>
+						<B>0.20784314</B>
+					</Color3>
+					<token name="BorderMode">0</token>
+					<int name="BorderSizePixel">0</int>
+					<bool name="ClipsDescendants">false</bool>
+					<bool name="Draggable">false</bool>
+					<bool name="Interactable">true</bool>
+					<int name="LayoutOrder">0</int>
+					<Ref name="NextSelectionDown">null</Ref>
+					<Ref name="NextSelectionLeft">null</Ref>
+					<Ref name="NextSelectionRight">null</Ref>
+					<Ref name="NextSelectionUp">null</Ref>
+					<UDim2 name="Position">
+						<XS>0</XS>
+						<XO>0</XO>
+						<YS>0</YS>
+						<YO>0</YO>
+					</UDim2>
+					<float name="Rotation">0</float>
+					<bool name="Selectable">false</bool>
+					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
+					<token name="Sink">0</token>
+					<UDim2 name="Size">
+						<XS>0</XS>
+						<XO>0</XO>
+						<YS>0</YS>
+						<YO>0</YO>
+					</UDim2>
+					<token name="SizeConstraint">0</token>
+					<bool name="Visible">false</bool>
+					<int name="ZIndex">1</int>
+					<bool name="AutoLocalize">true</bool>
+					<Ref name="RootLocalizationTable">null</Ref>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
+					<BinaryString name="AttributesSerialize" />
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">GainTemplate</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">Y2twwIJdx3Hv57TZHVvw1A==</SharedString>
+					<UniqueId name="UniqueId">4386c50c9615ed2d0ac62289000038d4</UniqueId>
+				</Properties>
+				<Item class="UIListLayout" referent="RBX8FDBE43A23DE46BABECB49E8463CBE1F">
+					<Properties>
+						<token name="HorizontalFlex">0</token>
+						<token name="ItemLineAlignment">0</token>
+						<UDim name="Padding">
+							<S>0</S>
+							<O>4</O>
+						</UDim>
+						<token name="VerticalFlex">0</token>
+						<bool name="Wraps">false</bool>
+						<token name="FillDirection">0</token>
+						<token name="HorizontalAlignment">0</token>
+						<token name="SortOrder">2</token>
+						<token name="VerticalAlignment">0</token>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">UIListLayout</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						<UniqueId name="UniqueId">4386c50c9615ed2d0ac62289000038d5</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="UIScale" referent="RBXC04D73554C63476CAC89DBF287F27D94">
+					<Properties>
+						<float name="Scale">1</float>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">PopScale</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						<UniqueId name="UniqueId">4386c50c9615ed2d0ac62289000038d6</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="TextLabel" referent="RBX64308289702A47698B1921F81A9FFC1A">
+					<Properties>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family>
+							<Weight>900</Weight>
+							<Style>Normal</Style>
+						</Font>
+						<float name="LineHeight">1</float>
+						<string name="LocalizationMatchIdentifier" />
+						<string name="LocalizationMatchedSourceText" />
+						<int name="MaxVisibleGraphemes">-1</int>
+						<string name="OpenTypeFeatures" />
+						<bool name="RichText">false</bool>
+						<string name="Text">+1</string>
+						<Color3 name="TextColor3">
+							<R>1</R>
+							<G>1</G>
+							<B>1</B>
+						</Color3>
+						<token name="TextDirection">0</token>
+						<bool name="TextScaled">false</bool>
+						<float name="TextSize">30</float>
+						<Color3 name="TextStrokeColor3">
+							<R>0</R>
+							<G>0</G>
+							<B>0</B>
+						</Color3>
+						<float name="TextStrokeTransparency">1</float>
+						<float name="TextTransparency">0</float>
+						<token name="TextTruncate">0</token>
+						<bool name="TextWrapped">false</bool>
+						<token name="TextXAlignment">2</token>
+						<token name="TextYAlignment">1</token>
+						<bool name="Active">false</bool>
+						<Vector2 name="AnchorPoint">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<token name="AutomaticSize">3</token>
+						<Color3 name="BackgroundColor3">
+							<R>0.639215708</R>
+							<G>0.635294139</G>
+							<B>0.647058845</B>
+						</Color3>
+						<float name="BackgroundTransparency">1</float>
+						<Color3 name="BorderColor3">
+							<R>0.105882354</R>
+							<G>0.164705887</G>
+							<B>0.20784314</B>
+						</Color3>
+						<token name="BorderMode">0</token>
+						<int name="BorderSizePixel">1</int>
+						<bool name="ClipsDescendants">false</bool>
+						<bool name="Draggable">false</bool>
+						<bool name="Interactable">true</bool>
+						<int name="LayoutOrder">1</int>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>0</XS>
+							<XO>0</XO>
+							<YS>0</YS>
+							<YO>0</YO>
+						</UDim2>
+						<float name="Rotation">0</float>
+						<bool name="Selectable">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
+						<token name="Sink">0</token>
+						<UDim2 name="Size">
+							<XS>0</XS>
+							<XO>0</XO>
+							<YS>0</YS>
+							<YO>0</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
+						<bool name="Visible">true</bool>
+						<int name="ZIndex">1</int>
+						<bool name="AutoLocalize">true</bool>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">Amount</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">Y2twwIJdx3Hv57TZHVvw1A==</SharedString>
+						<UniqueId name="UniqueId">4386c50c9615ed2d0ac62289000038d7</UniqueId>
+					</Properties>
+					<Item class="UIStroke" referent="RBXF7B1F206A3DC4B44B6F7112767200298">
+						<Properties>
+							<token name="ApplyStrokeMode">0</token>
+							<UDim name="BorderOffset">
+								<S>0</S>
+								<O>0</O>
+							</UDim>
+							<token name="BorderStrokePosition">0</token>
+							<Color3 name="Color">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<bool name="Enabled">true</bool>
+							<token name="LineJoinMode">0</token>
+							<token name="StrokeSizingMode">0</token>
+							<float name="Thickness">2.5</float>
+							<float name="Transparency">0</float>
+							<int name="ZIndex">1</int>
+							<BinaryString name="AttributesSerialize" />
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<string name="Name">UIStroke</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+							<UniqueId name="UniqueId">4386c50c9615ed2d0ac62289000038d8</UniqueId>
+						</Properties>
+					</Item>
+					<Item class="UIGradient" referent="RBXE9A87EBFE5344608ADFA13B7B490B1AC">
+						<Properties>
+							<ColorSequence name="Color">0 0.890196 1 0.184314 0 1 0.215686 0.72549 1 0 </ColorSequence>
+							<bool name="Enabled">true</bool>
+							<Vector2 name="Offset">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<float name="Rotation">90</float>
+							<float name="Scale">1</float>
+							<token name="TileMode">0</token>
+							<NumberSequence name="Transparency">0 0 0 1 0 0 </NumberSequence>
+							<token name="Type">0</token>
+							<BinaryString name="AttributesSerialize" />
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<string name="Name">UIGradient</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+							<UniqueId name="UniqueId">4386c50c9615ed2d0ac62289000038d9</UniqueId>
+						</Properties>
+					</Item>
+				</Item>
+				<Item class="ImageLabel" referent="RBX509D90DF7F894374AEA3F15F4303717B">
+					<Properties>
+						<Content name="Image"><url>rbxassetid://74760303647639</url></Content>
+						<Color3 name="ImageColor3">
+							<R>1</R>
+							<G>1</G>
+							<B>1</B>
+						</Color3>
+						<Vector2 name="ImageRectOffset">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<Vector2 name="ImageRectSize">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<float name="ImageTransparency">0</float>
+						<token name="ResampleMode">0</token>
+						<token name="ScaleType">3</token>
+						<Rect2D name="SliceCenter">
+							<min>
+								<X>0</X>
+								<Y>0</Y>
+							</min>
+							<max>
+								<X>0</X>
+								<Y>0</Y>
+							</max>
+						</Rect2D>
+						<float name="SliceScale">1</float>
+						<UDim2 name="TileSize">
+							<XS>1</XS>
+							<XO>0</XO>
+							<YS>1</YS>
+							<YO>0</YO>
+						</UDim2>
+						<bool name="Active">false</bool>
+						<Vector2 name="AnchorPoint">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<token name="AutomaticSize">0</token>
+						<Color3 name="BackgroundColor3">
+							<R>0.639215708</R>
+							<G>0.635294139</G>
+							<B>0.647058845</B>
+						</Color3>
+						<float name="BackgroundTransparency">1</float>
+						<Color3 name="BorderColor3">
+							<R>0.105882354</R>
+							<G>0.164705887</G>
+							<B>0.20784314</B>
+						</Color3>
+						<token name="BorderMode">0</token>
+						<int name="BorderSizePixel">1</int>
+						<bool name="ClipsDescendants">false</bool>
+						<bool name="Draggable">false</bool>
+						<bool name="Interactable">true</bool>
+						<int name="LayoutOrder">2</int>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>0</XS>
+							<XO>0</XO>
+							<YS>0</YS>
+							<YO>0</YO>
+						</UDim2>
+						<float name="Rotation">0</float>
+						<bool name="Selectable">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
+						<token name="Sink">0</token>
+						<UDim2 name="Size">
+							<XS>0</XS>
+							<XO>30</XO>
+							<YS>0</YS>
+							<YO>30</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
+						<bool name="Visible">true</bool>
+						<int name="ZIndex">1</int>
+						<bool name="AutoLocalize">true</bool>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
+						<BinaryString name="AttributesSerialize" />
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<string name="Name">Icon</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">Y2twwIJdx3Hv57TZHVvw1A==</SharedString>
+						<UniqueId name="UniqueId">4386c50c9615ed2d0ac62289000038da</UniqueId>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="LocalScript" referent="RBX4A3D382C1CAE4F1FA75E2E592B02A4CA">
+				<Properties>
+					<ProtectedString name="Source">local Debris = game:GetService("Debris")
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+
+local player = Players.LocalPlayer
+
+local gui = script.Parent
+local template = gui:WaitForChild("GainTemplate")
+
+-- settings
+local LIFETIME = 1.4  -- seconds on screen
+local RISE = 34       -- pixels it drifts up
+local GAP = 8         -- pixels between the popup and the Cash row
+local MIN_GAIN = 0.01 -- ignore smaller gains
+
+local SUFFIXES = { "", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc" }
+
+-- 5 -&gt; "5", 12.5 -&gt; "12.5", 12345 -&gt; "12.3K"
+local function formatNumber(value)
+	if value &gt;= 1000 then
+		local index = 0
+
+		while value &gt;= 1000 and index &lt; #SUFFIXES - 1 do
+			value /= 1000
+			index += 1
+		end
+
+		local text = string.format("%.1f", math.floor(value * 10) / 10)
+		text = text:gsub("%.0$", "")
+
+		return text .. SUFFIXES[index + 1]
+	end
+
+	local text = string.format("%.2f", value)
+	text = text:gsub("0+$", "")
+	text = text:gsub("%.$", "")
+
+	return text
+end
+
+local function findCashRow()
+	local currencies = player.PlayerGui:FindFirstChild("Currencies")
+	local main = currencies and currencies:FindFirstChild("MainCurrenciesFrame")
+	local list = main and main:FindFirstChild("CurrenciesFrame")
+
+	return list and list:FindFirstChild("Money")
+end
+
+local function showGain(gain)
+	local camera = workspace.CurrentCamera
+	local row = findCashRow()
+
+	local x = camera.ViewportSize.X - 20
+	local y = camera.ViewportSize.Y / 2
+
+	if row then
+		-- just to the left of the Cash row (kept on screen if the panel is closed)
+		x = math.min(row.AbsolutePosition.X - GAP, camera.ViewportSize.X - 20)
+		y = row.AbsolutePosition.Y + row.AbsoluteSize.Y / 2
+	end
+
+	local popup = template:Clone()
+	popup.Name = "Gain"
+	popup.Position = UDim2.fromOffset(x, y)
+	popup.Visible = true
+
+	local amountLabel = popup:WaitForChild("Amount")
+	local icon = popup:WaitForChild("Icon")
+	local scale = popup:WaitForChild("PopScale")
+
+	-- in case they were hidden while editing the template
+	amountLabel.Visible = true
+	icon.Visible = true
+
+	amountLabel.Text = "+" .. formatNumber(gain)
+	scale.Scale = 0
+
+	popup.Parent = gui
+
+	-- pop in
+	TweenService:Create(
+		scale,
+		TweenInfo.new(
+			0.25,
+			Enum.EasingStyle.Back,
+			Enum.EasingDirection.Out
+		),
+		{ Scale = 1 }
+	):Play()
+
+	-- drift up
+	TweenService:Create(
+		popup,
+		TweenInfo.new(
+			LIFETIME,
+			Enum.EasingStyle.Quad,
+			Enum.EasingDirection.Out
+		),
+		{ Position = UDim2.fromOffset(x, y - RISE) }
+	):Play()
+
+	-- fade out during the second half
+	local fadeInfo = TweenInfo.new(
+		LIFETIME * 0.5,
+		Enum.EasingStyle.Quad,
+		Enum.EasingDirection.In,
+		0,
+		false,
+		LIFETIME * 0.5
+	)
+
+	TweenService:Create(amountLabel, fadeInfo, { TextTransparency = 1 }):Play()
+	TweenService:Create(icon, fadeInfo, { ImageTransparency = 1 }):Play()
+
+	local stroke = amountLabel:FindFirstChildOfClass("UIStroke")
+
+	if stroke then
+		TweenService:Create(stroke, fadeInfo, { Transparency = 1 }):Play()
+	end
+
+	Debris:AddItem(popup, LIFETIME + 0.1)
+end
+
+-- don't pop a giant "+" for the saved Cash that loads when you join
+local ready = player:GetAttribute("DataLoaded") == true
+local lastCash = player:GetAttribute("Cash") or 0
+
+if not ready then
+	local connection
+
+	connection = player:GetAttributeChangedSignal("DataLoaded"):Connect(function()
+		if player:GetAttribute("DataLoaded") == true then
+			connection:Disconnect()
+
+			task.delay(1.5, function()
+				lastCash = player:GetAttribute("Cash") or 0
+				ready = true
+			end)
+		end
+	end)
+end
+
+player:GetAttributeChangedSignal("Cash"):Connect(function()
+	local cash = player:GetAttribute("Cash") or 0
+	local gain = cash - lastCash
+
+	lastCash = cash
+
+	if ready and gain &gt;= MIN_GAIN then
+		showGain(gain)
+	end
+end)
+</ProtectedString>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null /></Content>
+					<token name="RunContext">0</token>
+					<string name="ScriptGuid">{0A24E516-750D-45D3-B758-CB9845096642}</string>
+					<BinaryString name="AttributesSerialize" />
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">CashGainPopups</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">4386c50c9615ed2d0ac62289000038db</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<SharedStrings><SharedString md5="yuZpQdnvvUBOTYh1jqZ2cA==" />
+		<SharedString md5="Y2twwIJdx3Hv57TZHVvw1A==">YmxvYi11aS1vYmplY3Q=</SharedString>
+		</SharedStrings></roblox>
