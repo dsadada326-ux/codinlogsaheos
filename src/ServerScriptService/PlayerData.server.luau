@@ -181,6 +181,9 @@ do
 	for _, u in ipairs(LabConfig.Upgrades) do
 		DEFAULTS[LabConfig.upgradeAttribute(u.id)] = 0
 	end
+	for id in pairs(LabConfig.ExtraById) do
+		DEFAULTS[LabConfig.extraAttribute(id)] = false -- staff + decor from the Lab Shop
+	end
 end
 
 -- an unpublished place has no DataStore access, so only try when it can work

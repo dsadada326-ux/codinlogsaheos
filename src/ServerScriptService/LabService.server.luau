@@ -177,6 +177,25 @@ function Actions.sell(player)
 	return { ok = true, knowledge = total, count = count }
 end
 
+-- staff + decor from the Lab Shop
+function Actions.buyExtra(player, id)
+	local e = type(id) == "string" and LabConfig.ExtraById[id]
+	if not e then
+		return { ok = false, reason = "unknown" }
+	end
+	if LabConfig.ownsExtra(player, id) then
+		return { ok = false, reason = "owned" }
+	end
+	local attr = LabConfig.Currencies[e.currency].attr
+	local have = player:GetAttribute(attr) or 0
+	if have < e.cost then
+		return { ok = false, reason = "cost" }
+	end
+	player:SetAttribute(attr, round2(have - e.cost))
+	player:SetAttribute(LabConfig.extraAttribute(id), true)
+	return { ok = true }
+end
+
 function Actions.upgrade(player, id)
 	local u = LabConfig.UpgradeById[id]
 	if not u then
@@ -239,6 +258,9 @@ function Actions.advance(player)
 	for _, u in ipairs(LabConfig.Upgrades) do
 		player:SetAttribute(LabConfig.upgradeAttribute(u.id), 0)
 	end
+	for id in pairs(LabConfig.ExtraById) do
+		player:SetAttribute(LabConfig.extraAttribute(id), false)
+	end
 	player:SetAttribute("LabMark", mark + 1)
 	return { ok = true, mark = mark + 1 }
 end
@@ -267,15 +289,16 @@ actionRemote.OnServerInvoke = function(player, action, ...)
 end
 
 ------------------------------------------------------------------------------------------
--- passive production (Chem Tanks, Oxygen Generator, CO2 Extractor)
+-- passive production (Chem Tanks + mixing staff, Oxygen Generator, CO2 Extractor)
 ------------------------------------------------------------------------------------------
 task.spawn(function()
 	while true do
 		task.wait(1)
 		for _, player in ipairs(Players:GetPlayers()) do
 			if loaded(player) then
-				if LabConfig.owns(player, "ChemTanks") then
-					add(player, "Chemicals", LabConfig.Passive.Chemicals * LabConfig.chemMultiplier(player))
+				local perSecond = (LabConfig.owns(player, "ChemTanks") and LabConfig.Passive.Chemicals or 0) + LabConfig.autoMix(player)
+				if perSecond > 0 then
+					add(player, "Chemicals", perSecond * LabConfig.chemMultiplier(player))
 				end
 				if LabConfig.owns(player, "OxygenGenerator") then
 					add(player, "Oxygen", LabConfig.Passive.Oxygen * LabConfig.oxygenMultiplier(player))

@@ -16,7 +16,7 @@ LabConfig.Currencies = {
 }
 
 -- where the lab is (currency rows, menu layout, hotbar)
-LabConfig.Bounds = { center = Vector3.new(602, 20, -153), size = Vector3.new(112, 80, 162) }
+LabConfig.Bounds = { center = Vector3.new(623, 20, -155), size = Vector3.new(158, 80, 152) } -- includes the Staff Wing
 function LabConfig.isInside(position)
 	local b = LabConfig.Bounds
 	local d = position - b.center
@@ -72,6 +72,94 @@ end
 function LabConfig.available(player, id)
 	local def = LabConfig.Items[id]
 	return def ~= nil and not LabConfig.owns(player, id) and (def.after == nil or LabConfig.owns(player, def.after))
+end
+
+------------------------------------------------------------------------------------------
+-- STAFF + DECOR: bought from the Lab Shop kiosk in the Staff Wing (models: LabAssets.Staff /
+-- LabAssets.Decor). They stay through Lab Levels and reset with an Advancement Mark, like the
+-- Knowledge Shop.
+--   boost = { chem / oxygen / co2 / prod (all three) / sell (Knowledge) / luck = multiplier }
+--   autoMix = Chemicals per second, as if someone were mixing for you (uses your Chemicals boosts)
+--   spot = { X, Z, turn in degrees } on the Staff Wing floor
+------------------------------------------------------------------------------------------
+LabConfig.StaffWing = { center = Vector3.new(645, 2.55, -200), kiosk = { 604, -178 } }
+
+LabConfig.Staff = {
+	{ id = "Intern", name = "Lab Intern", desc = "Mixes for you", cost = 250, currency = "Chemicals", autoMix = 4, spot = { 612, -183 } },
+	{ id = "OxygenTech", name = "Oxygen Tech", desc = "Keeps the pumps running", cost = 150, currency = "Oxygen", boost = { oxygen = 1.5 }, spot = { 629, -183 } },
+	{ id = "Chemist", name = "Chemist", desc = "Stronger mixtures", cost = 6000, currency = "Chemicals", boost = { chem = 1.5 }, spot = { 646, -183 } },
+	{ id = "PotionSeller", name = "Potion Seller", desc = "Haggles for better prices", cost = 800, currency = "Knowledge", boost = { sell = 1.3 }, spot = { 663, -183 } },
+	{ id = "CarbonAnalyst", name = "Carbon Analyst", desc = "Captures more CO2", cost = 400, currency = "CarbonDioxide", boost = { co2 = 1.5 }, spot = { 612, -199 } },
+	{ id = "BrewAssistant", name = "Brew Assistant", desc = "Steadier hands at the brewer", cost = 4000, currency = "Oxygen", boost = { luck = 1.2 }, spot = { 629, -199 } },
+	{ id = "HeadResearcher", name = "Head Researcher", desc = "Runs the whole lab better", cost = 30000, currency = "Knowledge", boost = { prod = 1.5 }, spot = { 646, -199 } },
+	{ id = "LabDirector", name = "Lab Director", desc = "The boss. Big deals, big luck", cost = 300000, currency = "Knowledge", boost = { sell = 2, luck = 1.25 }, spot = { 663, -199 } },
+}
+
+LabConfig.Decor = {
+	{ id = "WaterCooler", name = "Water Cooler", desc = "Hydrated chemists", cost = 1500, currency = "Chemicals", boost = { chem = 1.1 }, spot = { 606, -220 } },
+	{ id = "MedkitStation", name = "Medkit Station", desc = "Safety first", cost = 600, currency = "Oxygen", boost = { oxygen = 1.1 }, spot = { 618, -220 } },
+	{ id = "SupplyShelf", name = "Supply Shelf", desc = "Everything in reach", cost = 50000, currency = "Chemicals", boost = { prod = 1.1 }, spot = { 630, -220 } },
+	{ id = "IceBox", name = "Ice Box", desc = "Keeps the CO2 cold", cost = 1000, currency = "CarbonDioxide", boost = { co2 = 1.15 }, spot = { 643, -220 } },
+	{ id = "MonitorBank", name = "Monitor Bank", desc = "Tracks every sale", cost = 5000, currency = "Knowledge", boost = { sell = 1.1 }, spot = { 656, -220 } },
+	{ id = "PotionShelf", name = "Potion Shelf", desc = "Show off your best brews", cost = 15000, currency = "Knowledge", boost = { luck = 1.1 }, spot = { 666, -220 } },
+	{ id = "PotionCrates", name = "Potion Crates", desc = "Ship potions in bulk", cost = 80000, currency = "Knowledge", boost = { sell = 1.15 }, spot = { 681, -188 } },
+	{ id = "SurgeryLamp", name = "Surgery Lamp", desc = "Precision lighting", cost = 8000, currency = "CarbonDioxide", boost = { prod = 1.2 }, spot = { 681, -213 } },
+}
+
+LabConfig.ExtraById = {}
+for _, list in ipairs({ LabConfig.Staff, LabConfig.Decor }) do
+	for _, e in ipairs(list) do
+		e.kind = list == LabConfig.Staff and "Staff" or "Decor"
+		LabConfig.ExtraById[e.id] = e
+	end
+end
+
+function LabConfig.extraAttribute(id)
+	return "LabExtra_" .. id
+end
+
+function LabConfig.ownsExtra(player, id)
+	return player:GetAttribute(LabConfig.extraAttribute(id)) == true
+end
+
+-- product of one boost across everything you own
+function LabConfig.extraBoost(player, key)
+	local total = 1
+	for id, e in pairs(LabConfig.ExtraById) do
+		if e.boost and e.boost[key] and LabConfig.ownsExtra(player, id) then
+			total *= e.boost[key]
+		end
+	end
+	return total
+end
+
+-- Chemicals per second from staff that mix for you (before your Chemicals boosts)
+function LabConfig.autoMix(player)
+	local total = 0
+	for id, e in pairs(LabConfig.ExtraById) do
+		if e.autoMix and LabConfig.ownsExtra(player, id) then
+			total += e.autoMix
+		end
+	end
+	return total
+end
+
+-- what a staff member / decor piece does, as text
+local BOOST_NAMES = { chem = "Chemicals", oxygen = "Oxygen", co2 = "CO2", prod = "all production", sell = "Knowledge", luck = "brew luck" }
+local BOOST_ORDER = { "chem", "oxygen", "co2", "prod", "sell", "luck" }
+function LabConfig.extraEffect(e)
+	local bits = {}
+	if e.autoMix then
+		table.insert(bits, "+" .. e.autoMix .. " Chemicals/s")
+	end
+	for _, key in ipairs(BOOST_ORDER) do
+		local v = e.boost and e.boost[key]
+		if v then
+			local s = string.format("%.2f", v):gsub("0+$", ""):gsub("%.$", "")
+			table.insert(bits, "x" .. s .. " " .. BOOST_NAMES[key])
+		end
+	end
+	return table.concat(bits, ", ")
 end
 
 ------------------------------------------------------------------------------------------
@@ -189,21 +277,23 @@ end
 
 function LabConfig.chemMultiplier(player)
 	return up(player, "ChemMastery", 0.5) * (LabConfig.owns(player, "ReactorCore") and 2 or 1) * LabConfig.progressProd(player)
+		* LabConfig.extraBoost(player, "chem") * LabConfig.extraBoost(player, "prod")
 end
 function LabConfig.oxygenMultiplier(player)
 	return up(player, "DeepBreath", 0.5) * (LabConfig.owns(player, "PipeNetwork") and 1.5 or 1) * (LabConfig.owns(player, "ReactorCore") and 2 or 1)
-		* LabConfig.progressProd(player)
+		* LabConfig.progressProd(player) * LabConfig.extraBoost(player, "oxygen") * LabConfig.extraBoost(player, "prod")
 end
 function LabConfig.co2Multiplier(player)
 	return up(player, "CarbonCapture", 0.5) * (LabConfig.owns(player, "ReactorCore") and 2 or 1) * LabConfig.progressProd(player)
+		* LabConfig.extraBoost(player, "co2") * LabConfig.extraBoost(player, "prod")
 end
 function LabConfig.sellMultiplier(player)
 	return up(player, "Appraisal", 0.25) * (LabConfig.owns(player, "ResearchComputers") and 1.25 or 1)
-		* (LabConfig.levelDef(player).sell or 1) * (LabConfig.markDef(player).knowledge or 1)
+		* (LabConfig.levelDef(player).sell or 1) * (LabConfig.markDef(player).knowledge or 1) * LabConfig.extraBoost(player, "sell")
 end
 function LabConfig.luck(player, brew)
 	return (brew and brew.luck or 1) * (1.25 ^ LabConfig.level(player, "LuckyBrew")) * (LabConfig.owns(player, "LabBeacon") and 1.25 or 1)
-		* (LabConfig.levelDef(player).luck or 1) * (LabConfig.markDef(player).luck or 1)
+		* (LabConfig.levelDef(player).luck or 1) * (LabConfig.markDef(player).luck or 1) * LabConfig.extraBoost(player, "luck")
 end
 
 ------------------------------------------------------------------------------------------
