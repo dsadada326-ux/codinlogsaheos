@@ -24,14 +24,25 @@ local function inScreenGui(obj)
 	return gui ~= nil and gui:IsA("ScreenGui")
 end
 
+local function isScaledStroke(stroke)
+	-- Strokes in ScaledSize mode are already a fraction of the object's size
+	local ok, mode = pcall(function()
+		return stroke.StrokeSizingMode
+	end)
+	return ok and mode == Enum.StrokeSizingMode.ScaledSize
+end
+
 local function apply(obj)
 	if obj:IsA("UIStroke") then
+		if isScaledStroke(obj) then return end
 		local base = obj:GetAttribute("BaseThickness")
 		if base == nil then
 			base = obj.Thickness
 			obj:SetAttribute("BaseThickness", base)
 		end
-		obj.Thickness = if base > 0 then math.max(base * factor, 0.75) else 0
+		-- Anything under 1 is a scaled thickness set some other way; leave it
+		if base < 1 then return end
+		obj.Thickness = math.max(base * factor, 1)
 	elseif obj:IsA("TextLabel") or obj:IsA("TextButton") or obj:IsA("TextBox") then
 		if obj.TextScaled then return end
 		local base = obj:GetAttribute("BaseTextSize")
