@@ -618,8 +618,8 @@
 							<token name="HorizontalFlex">0</token>
 							<token name="ItemLineAlignment">0</token>
 							<UDim name="Padding">
-								<S>0</S>
-								<O>15</O>
+								<S>0.12045276781524565</S>
+								<O>0</O>
 							</UDim>
 							<token name="VerticalFlex">0</token>
 							<bool name="Wraps">false</bool>
@@ -657,7 +657,7 @@
 								<B>0</B>
 							</Color3>
 							<token name="TextDirection">0</token>
-							<bool name="TextScaled">false</bool>
+							<bool name="TextScaled">true</bool>
 							<float name="TextSize">14</float>
 							<Color3 name="TextStrokeColor3">
 								<R>0</R>
@@ -1162,7 +1162,7 @@
 								<UniqueId name="UniqueId">40e32b73abd9ad5f0ac9bc4d0002ae21</UniqueId>
 							</Properties>
 						</Item>
-					</Item>
+					<Item class="UITextSizeConstraint" referent="RBX8B67CBFB9A564E87A31838B4B8E926CD"><Properties><string name="Name">UITextSizeConstraint</string><int name="MaxTextSize">14</int><int name="MinTextSize">1</int></Properties></Item></Item>
 					<Item class="TextButton" referent="RBX729F17AE13864C0D9222BF1D0535F731">
 						<Properties>
 							<Font name="FontFace">
@@ -1183,7 +1183,7 @@
 								<B>0</B>
 							</Color3>
 							<token name="TextDirection">0</token>
-							<bool name="TextScaled">false</bool>
+							<bool name="TextScaled">true</bool>
 							<float name="TextSize">14</float>
 							<Color3 name="TextStrokeColor3">
 								<R>0</R>
@@ -1688,7 +1688,7 @@
 								<UniqueId name="UniqueId">40e32b73abd9ad5f0ac9bc4d0002ae2c</UniqueId>
 							</Properties>
 						</Item>
-					</Item>
+					<Item class="UITextSizeConstraint" referent="RBXF095FB186AE745A6B7A0CA2782C9D7D7"><Properties><string name="Name">UITextSizeConstraint</string><int name="MaxTextSize">14</int><int name="MinTextSize">1</int></Properties></Item></Item>
 				</Item>
 				<Item class="Frame" referent="RBX23435B30BC2F46A28B622EF2E87D164B">
 					<Properties>
@@ -2433,7 +2433,7 @@
 						</Properties>
 					</Item>
 				</Item>
-			</Item>
+			<Item class="UIAspectRatioConstraint" referent="RBX34486053898D4200B010E93F07078C67"><Properties><string name="Name">AutoAspect</string><float name="AspectRatio">0.5907</float><token name="AspectType">0</token><token name="DominantAxis">0</token></Properties></Item></Item>
 			<Item class="Frame" referent="RBX1C43A154D9E244DBB304F1CEBED2ECD1">
 				<Properties>
 					<token name="Style">0</token>
@@ -5018,7 +5018,7 @@ MTIyNTgwMzU=</BinaryString>
 								<B>0.207843155</B>
 							</Color3>
 							<token name="TextDirection">0</token>
-							<bool name="TextScaled">false</bool>
+							<bool name="TextScaled">true</bool>
 							<float name="TextSize">8</float>
 							<Color3 name="TextStrokeColor3">
 								<R>0</R>
@@ -5622,7 +5622,7 @@ MTIyNTgwMzU=</BinaryString>
 								<UniqueId name="UniqueId">40e32b73abd9ad5f0ac9bc4d0002ae7e</UniqueId>
 							</Properties>
 						</Item>
-					</Item>
+					<Item class="UITextSizeConstraint" referent="RBX40D23ABE078341AA885FA68C4BDB358D"><Properties><string name="Name">UITextSizeConstraint</string><int name="MaxTextSize">8</int><int name="MinTextSize">1</int></Properties></Item></Item>
 				</Item>
 				<Item class="Frame" referent="RBXDA96C801D3CE4C789B4AB8C61F5608E5">
 					<Properties>
@@ -7437,7 +7437,7 @@ Use a consumable to start one!</string>
 						</Item>
 					</Item>
 				</Item>
-			</Item>
+			<Item class="UIAspectRatioConstraint" referent="RBXA8B5A7602CD14A6ABEA6D51FB0588C2D"><Properties><string name="Name">AutoAspect</string><float name="AspectRatio">1.7595</float><token name="AspectType">0</token><token name="DominantAxis">0</token></Properties></Item></Item>
 			<Item class="Frame" referent="RBX227AE867F61847DE8CEB113463F8EE0C">
 				<Properties>
 					<token name="Style">0</token>
@@ -8138,7 +8138,7 @@ Use a consumable to start one!</string>
 									<B>0</B>
 								</Color3>
 								<token name="TextDirection">0</token>
-								<bool name="TextScaled">false</bool>
+								<bool name="TextScaled">true</bool>
 								<float name="TextSize">14</float>
 								<Color3 name="TextStrokeColor3">
 									<R>0</R>
@@ -8643,7 +8643,7 @@ Use a consumable to start one!</string>
 									<UniqueId name="UniqueId">40e32b73abd9ad5f0ac9bc4d0002aeb9</UniqueId>
 								</Properties>
 							</Item>
-						</Item>
+						<Item class="UITextSizeConstraint" referent="RBX9572CC6D10144DA9ACA43D0C6B2C8339"><Properties><string name="Name">UITextSizeConstraint</string><int name="MaxTextSize">14</int><int name="MinTextSize">1</int></Properties></Item></Item>
 						<Item class="TextButton" referent="RBX387FCF6C463B4EAF814E8DC9A79F5A39">
 							<Properties>
 								<Font name="FontFace">
@@ -8664,7 +8664,7 @@ Use a consumable to start one!</string>
 									<B>0</B>
 								</Color3>
 								<token name="TextDirection">0</token>
-								<bool name="TextScaled">false</bool>
+								<bool name="TextScaled">true</bool>
 								<float name="TextSize">14</float>
 								<Color3 name="TextStrokeColor3">
 									<R>0</R>
@@ -9169,7 +9169,7 @@ Use a consumable to start one!</string>
 									<UniqueId name="UniqueId">40e32b73abd9ad5f0ac9bc4d0002aec4</UniqueId>
 								</Properties>
 							</Item>
-						</Item>
+						<Item class="UITextSizeConstraint" referent="RBX64D6022CF13C40F8A3C430CD15C9EBC2"><Properties><string name="Name">UITextSizeConstraint</string><int name="MaxTextSize">14</int><int name="MinTextSize">1</int></Properties></Item></Item>
 					</Item>
 					<Item class="ImageLabel" referent="RBXA828107C2FE54BEB8ED1D2E2F58C833E">
 						<Properties>

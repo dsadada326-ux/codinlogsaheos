@@ -1119,7 +1119,7 @@
 								<B>0.207843155</B>
 							</Color3>
 							<token name="TextDirection">0</token>
-							<bool name="TextScaled">false</bool>
+							<bool name="TextScaled">true</bool>
 							<float name="TextSize">8</float>
 							<Color3 name="TextStrokeColor3">
 								<R>0</R>
@@ -1744,7 +1744,7 @@ end)</ProtectedString>
 								<UniqueId name="UniqueId">2eade383e86fc3f90aca324a000120b3</UniqueId>
 							</Properties>
 						</Item>
-					</Item>
+					<Item class="UITextSizeConstraint" referent="RBX957E31519D9C4D31919A512D9C274077"><Properties><string name="Name">UITextSizeConstraint</string><int name="MaxTextSize">8</int><int name="MinTextSize">1</int></Properties></Item></Item>
 				</Item>
 				<Item class="TextButton" referent="RBX747B64861A29468BA290C199A4A94B7D">
 					<Properties>
@@ -1766,7 +1766,7 @@ end)</ProtectedString>
 							<B>0</B>
 						</Color3>
 						<token name="TextDirection">0</token>
-						<bool name="TextScaled">false</bool>
+						<bool name="TextScaled">true</bool>
 						<float name="TextSize">14</float>
 						<Color3 name="TextStrokeColor3">
 							<R>0</R>
@@ -2270,7 +2270,7 @@ end)</ProtectedString>
 							<UniqueId name="UniqueId">2eade383e86fc3f90aca324a000108b3</UniqueId>
 						</Properties>
 					</Item>
-				</Item>
+				<Item class="UITextSizeConstraint" referent="RBX24C3F11DEF0D4D308012A8B8D7668561"><Properties><string name="Name">UITextSizeConstraint</string><int name="MaxTextSize">14</int><int name="MinTextSize">1</int></Properties></Item></Item>
 				<Item class="ImageLabel" referent="RBX224CA584AEBE4BD6A1C249166C05782A">
 					<Properties>
 						<Content name="Image"><url>rbxassetid://128228845374308</url></Content>
@@ -2684,7 +2684,7 @@ end)</ProtectedString>
 						</Properties>
 					</Item>
 				</Item>
-			</Item>
+			<Item class="UIAspectRatioConstraint" referent="RBX7DEF9E1B1881415FBE67F8250E5DF56A"><Properties><string name="Name">AutoAspect</string><float name="AspectRatio">1.7595</float><token name="AspectType">0</token><token name="DominantAxis">0</token></Properties></Item></Item>
 		</Item>
 		<SharedStrings><SharedString md5="yuZpQdnvvUBOTYh1jqZ2cA==" />
 		<SharedString md5="Y2twwIJdx3Hv57TZHVvw1A==">YmxvYi11aS1vYmplY3Q=</SharedString>

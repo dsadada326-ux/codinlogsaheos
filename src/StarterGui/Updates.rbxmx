@@ -1119,7 +1119,7 @@
 								<B>0.207843155</B>
 							</Color3>
 							<token name="TextDirection">0</token>
-							<bool name="TextScaled">false</bool>
+							<bool name="TextScaled">true</bool>
 							<float name="TextSize">8</float>
 							<Color3 name="TextStrokeColor3">
 								<R>0</R>
@@ -1723,7 +1723,7 @@
 								<UniqueId name="UniqueId">40e32b73abd9ad5f0ac9bc4d0002abca</UniqueId>
 							</Properties>
 						</Item>
-					</Item>
+					<Item class="UITextSizeConstraint" referent="RBXD9E5E91451BA45CCA7051D6C36878B08"><Properties><string name="Name">UITextSizeConstraint</string><int name="MaxTextSize">8</int><int name="MinTextSize">1</int></Properties></Item></Item>
 				</Item>
 				<Item class="ScrollingFrame" referent="RBXDB5550900A2245568ACBBF7B43AAF2FD">
 					<Properties>
@@ -2627,7 +2627,7 @@
 						</Item>
 					</Item>
 				</Item>
-			</Item>
+			<Item class="UIAspectRatioConstraint" referent="RBX4D24068933DD4CE487057E24EE1ED764"><Properties><string name="Name">AutoAspect</string><float name="AspectRatio">1.7595</float><token name="AspectType">0</token><token name="DominantAxis">0</token></Properties></Item></Item>
 		</Item>
 		<SharedStrings><SharedString md5="yuZpQdnvvUBOTYh1jqZ2cA==" />
 		<SharedString md5="Y2twwIJdx3Hv57TZHVvw1A==">YmxvYi11aS1vYmplY3Q=</SharedString>

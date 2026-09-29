@@ -109,7 +109,7 @@
 							<B>0</B>
 						</Color3>
 						<token name="TextDirection">0</token>
-						<bool name="TextScaled">false</bool>
+						<bool name="TextScaled">true</bool>
 						<float name="TextSize">14</float>
 						<Color3 name="TextStrokeColor3">
 							<R>0</R>
@@ -614,7 +614,7 @@
 							<UniqueId name="UniqueId">40e32b73abd9ad5f0ac9bc4d0002abe8</UniqueId>
 						</Properties>
 					</Item>
-				</Item>
+				<Item class="UITextSizeConstraint" referent="RBX6CECAC6F771C42BF99DDBD30D25DF3EE"><Properties><string name="Name">UITextSizeConstraint</string><int name="MaxTextSize">14</int><int name="MinTextSize">1</int></Properties></Item></Item>
 				<Item class="UICorner" referent="RBX8418336C21A241F292D31D6D060C230D">
 					<Properties>
 						<UDim name="BottomLeftRadius">
@@ -1645,7 +1645,7 @@
 								<B>0.207843155</B>
 							</Color3>
 							<token name="TextDirection">0</token>
-							<bool name="TextScaled">false</bool>
+							<bool name="TextScaled">true</bool>
 							<float name="TextSize">8</float>
 							<Color3 name="TextStrokeColor3">
 								<R>0</R>
@@ -2249,7 +2249,7 @@
 								<UniqueId name="UniqueId">40e32b73abd9ad5f0ac9bc4d0002ac0c</UniqueId>
 							</Properties>
 						</Item>
-					</Item>
+					<Item class="UITextSizeConstraint" referent="RBXE1A81CF9869D4A43AF07F17FFC4D7E84"><Properties><string name="Name">UITextSizeConstraint</string><int name="MaxTextSize">8</int><int name="MinTextSize">1</int></Properties></Item></Item>
 				</Item>
 				<Item class="Frame" referent="RBX5BC88542A34D44D98955AD3B4EAABD86">
 					<Properties>
@@ -2842,7 +2842,7 @@
 						</Properties>
 					</Item>
 				</Item>
-			</Item>
+			<Item class="UIAspectRatioConstraint" referent="RBXE0F8C43D820A44D687020852CF4788FC"><Properties><string name="Name">AutoAspect</string><float name="AspectRatio">1.4222</float><token name="AspectType">0</token><token name="DominantAxis">0</token></Properties></Item></Item>
 		</Item>
 		<SharedStrings><SharedString md5="yuZpQdnvvUBOTYh1jqZ2cA==" />
 		<SharedString md5="Y2twwIJdx3Hv57TZHVvw1A==">YmxvYi11aS1vYmplY3Q=</SharedString>
