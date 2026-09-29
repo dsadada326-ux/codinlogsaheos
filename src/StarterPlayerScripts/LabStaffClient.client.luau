@@ -49,7 +49,7 @@ folder.Parent = workspace
 -- LOOK: dark panels, Montserrat, purple accents
 ------------------------------------------------------------------------------------------
 local FONT = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.Bold)
-local FONT_HEAVY = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.Black)
+local FONT_HEAVY = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.Heavy)
 local BG = Color3.fromRGB(14, 14, 16)
 local LINE = Color3.fromRGB(70, 30, 150)
 local ACCENT = Color3.fromRGB(120, 40, 255)
